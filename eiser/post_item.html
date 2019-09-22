@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <title>Eiser ecommerce</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="vendors/linericon/style.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/themify-icons.css" />
+  <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css" />
+  <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css" />
+  <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
+  <link rel="stylesheet" href="vendors/animate-css/animate.css" />
+  <link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  <!------ Include the above in your HEAD tag ---------->
+
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+  <!-- main css -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- <style class="cp-pen-styles">
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+    @import url("https://fonts.googleapis.com/css?family=Raleway");
+
+    .body {
+      background-color: #eff5f6;
+    }
+
+    .wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-family: inherit;
+      margin: 0 0 .75em 0;
+      color: #728c8d;
+      text-align: center;
+    }
+
+    .box {
+      display: block;
+      min-width: 300px;
+      height: 300px;
+      margin: 10px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow: hidden;
+    }
+
+    .upload-options {
+      position: relative;
+      height: 75px;
+      background-color: cadetblue;
+      cursor: pointer;
+      overflow: hidden;
+      text-align: center;
+      -webkit-transition: background-color ease-in-out 150ms;
+      transition: background-color ease-in-out 150ms;
+    }
+
+    .upload-options:hover {
+      background-color: #7fb1b3;
+    }
+
+    .upload-options input {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+
+    .upload-options label {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      font-weight: 400;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .upload-options label::after {
+      content: 'add';
+      font-family: 'Material Icons';
+      position: absolute;
+      font-size: 2.5rem;
+      color: #e6e6e6;
+      top: calc(50% - 2.5rem);
+      left: calc(50% - 1.25rem);
+      z-index: 0;
+    }
+
+    .upload-options label span {
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .upload-options label span:hover i.material-icons {
+      color: lightgray;
+    }
+
+    .js--image-preview {
+      height: 225px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      background-image: url("");
+      background-color: white;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .js--image-preview::after {
+      content: "photo_size_select_actual";
+      font-family: 'Material Icons';
+      position: relative;
+      font-size: 4.5em;
+      color: #e6e6e6;
+      top: calc(50% - 3rem);
+      left: calc(50% - 2.25rem);
+      z-index: 0;
+    }
+
+    .js--image-preview.js--no-default::after {
+      display: none;
+    }
+
+    i.material-icons {
+      -webkit-transition: color 100ms ease-in-out;
+      transition: color 100ms ease-in-out;
+      font-size: 2.25em;
+      line-height: 55px;
+      color: white;
+      display: block;
+    }
+
+    .drop {
+      display: block;
+      position: absolute;
+      background: rgba(95, 158, 160, 0.2);
+      border-radius: 100%;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+
+    .animate {
+      -webkit-animation: ripple 0.4s linear;
+      animation: ripple 0.4s linear;
+    }
+
+    @-webkit-keyframes ripple {
+      100% {
+        opacity: 0;
+        -webkit-transform: scale(2.5);
+        transform: scale(2.5);
+      }
+    }
+
+    @keyframes ripple {
+      100% {
+        opacity: 0;
+        -webkit-transform: scale(2.5);
+        transform: scale(2.5);
+      }
+    }
+  </style> -->
+<!-- <style>
+.preview-images-zone {
+    width: 100%;
+    border: 1px solid #ddd;
+    min-height: 180px;
+    /* display: flex; */
+    padding: 5px 5px 0px 5px;
+    position: relative;
+    overflow:auto;
+}
+.preview-images-zone > .preview-image:first-child {
+    height: 185px;
+    width: 185px;
+    position: relative;
+    margin-right: 5px;
+}
+.preview-images-zone > .preview-image {
+    height: 90px;
+    width: 90px;
+    position: relative;
+    margin-right: 5px;
+    float: left;
+    margin-bottom: 5px;
+}
+.preview-images-zone > .preview-image > .image-zone {
+    width: 100%;
+    height: 100%;
+}
+.preview-images-zone > .preview-image > .image-zone > img {
+    width: 100%;
+    height: 100%;
+}
+.preview-images-zone > .preview-image > .tools-edit-image {
+    position: absolute;
+    z-index: 100;
+    color: #fff;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    display: none;
+}
+.preview-images-zone > .preview-image > .image-cancel {
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+    margin-right: 10px;
+    cursor: pointer;
+    display: none;
+    z-index: 100;
+}
+.preview-image:hover > .image-zone {
+    cursor: move;
+    opacity: .5;
+}
+.preview-image:hover > .tools-edit-image,
+.preview-image:hover > .image-cancel {
+    display: block;
+}
+.ui-sortable-helper {
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.container {
+    padding-top: 50px;
+}
+</style> -->
+
+<style>
+    * {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+padding: 0;
+font-weight: 400;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 1rem;
+line-height: 1.58;
+color: #333;
+background-color: #f4f4f4;
+}
+
+/* body:before {
+height: 50%;
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+background: #128ff2;
+content: "";
+z-index: 0;
+} */
+
+.clearfix:after {
+display: block;
+content: "";
+clear: both;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+margin-top: 20px;
+margin-bottom: 20px;
+}
+
+h1 {
+font-size: 1.7em;
+}
+
+a {
+color: #128ff2;
+}
+
+button {
+box-shadow: none;
+border: 1px solid transparent;
+font-size: 14px;
+outline: none;
+line-height: 100%;
+white-space: nowrap;
+vertical-align: middle;
+padding: 0.6rem 1rem;
+border-radius: 2px;
+transition: all 0.2s ease-in-out;
+cursor: pointer;
+min-height: 38px;
+}
+
+button.primary {
+background-color: #128ff2;
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+color: #fff;
+}
+
+input {
+font-size: 1rem;
+}
+
+input[type="file"] {
+border: 1px solid #128ff2;
+padding: 6px;
+max-width: 100%;
+}
+
+.file-input {
+width: 100%;
+}
+
+.submit-btn {
+display: block;
+margin-top: 15px;
+min-width: 100px;
+}
+
+@media screen and (min-width: 500px) {
+.file-input {
+    width: calc(100% - 115px);
+}
+
+.submit-btn {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 10px;
+}
+}
+
+.upload-container {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+  margin-top: 60px;
+  min-height: 400px;
+  position: relative;
+  padding: 20px;
+}
+
+.upload-header {
+border-bottom: 1px solid #ececec;
+}
+
+.upload-header h2 {
+font-weight: 500;
+}
+
+.single-upload {
+padding-bottom: 20px;
+margin-bottom: 20px;
+border-bottom: 1px solid #e8e8e8;
+}
+
+.upload-response {
+overflow-x: hidden;
+word-break: break-all;
+}
+    </style>
+
+</head>
+<header class="header_area">
+  <div class="main_menu">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light w-100">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <a class="navbar-brand logo_h" href="index.html">
+          <img src="img/logo.png" alt="" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+      </nav>
+    </div>
+  </div>
+</header>
+
+<body>
+
+  <!--================Home Banner Area =================-->
+  <section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+      <div class="container">
+        <div class="banner_content d-md-flex justify-content-between align-items-center">
+          <div class="mb-3 mb-md-0">
+            <h2>Upload Product</h2>
+            <p>Input necessary details</p>
+          </div>
+          <div class="page_link">
+            <a href="index.html">Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Home Banner Area =================-->
+
+  <!-- ==========Form area========== -->
+  <section class="blog_area single-post-area section_gap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 posts-list">
+          <form class="colum-12">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Name</label>
+              <input class="form-control" id="product_name" placeholder="Enter Product Name">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Category</label>
+              <select  id="category" class="browser-default custom-select"> 
+                <option selected>Choose Category</option>
+                <option value="1">Electronics</option>
+                <option value="2">Furniture</option>
+                <option value="3">Cloths</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Product Details</label>
+              <textarea class="form-control w-100" name="comment" id="product_details" cols="30" rows="10"
+                placeholder="Write Details of The Product"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Price</label>
+              <input class="form-control" id="price" placeholder="Enter Price">
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">Discount Price</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="checkbox" id="discount_checkbox" aria-label="Checkbox for following text input">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="discount_price" aria-label="Text input with checkbox">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">Product Specification</label>
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default"><span class="active">Brand</span></span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default" id="procuct_brand">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default"><span class="active">Model</span></span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default" id="procuct_model">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default"><span
+                      class="active">Height</span></span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default" id="procuct_height">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default"><span class="active">Width</span></span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default" id="procuct_width">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default"><span
+                      class="active">Weight</span></span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default" id="procuct_weight">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default"><span
+                      class="active">Warrenty</span></span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                  aria-describedby="inputGroup-sizing-default" id="procuct_warrenty">
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="main_title">
+          <h1><span>Select Photos to upload</span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== image select area ========= -->
+  <!-- <div class="form-group">
+    <div class="wrapper">
+      <div class="box">
+        <div class="js--image-preview"></div>
+        <div class="upload-options">
+          <label>
+            <input type="file" class="image-upload" name="file" accept="image/*" />
+          </label>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="js--image-preview"></div>
+        <div class="upload-options">
+          <label>
+            <input type="file" class="image-upload" accept="image/*" />
+          </label>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="js--image-preview"></div>
+        <div class="upload-options">
+          <label>
+            <input type="file" class="image-upload" accept="image/*" />
+          </label>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="container">
+      <fieldset class="form-group">
+          <a href="javascript:void(0)" onclick="$('#multipleInput').click()">Upload Image</a>
+          <input type="file" id="multipleInput" name="files" style="display: none;" class="form-control" multiple>
+      </fieldset>
+
+      <div class="preview-images-zone" id="input">
+      </div>
+  </div> -->
+
+  <!-- <div class="upload-container"> -->
+      <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+          <div class="multiple-upload">
+              <form id="multipleUploadForm" name="multipleUploadForm">
+                  <input id="multipleFileUploadInput" type="file" name="files" class="file-input" multiple required />
+              </form>
+              <div class="upload-response">
+                  <div id="multipleFileUploadError"></div>
+                  <div id="multipleFileUploadSuccess"></div>
+              </div>
+          </div>
+          </div>
+          </div>
+          </div>
+      
+      <!-- </div> -->
+
+  <section class="blog_area single-post-area section_gap">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="main_title">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" id="upload_product_button">Upload</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- =============Form area Ended============ -->
+  <!--================ start footer Area  =================-->
+  <footer class="footer-area section_gap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-6 single-footer-widget">
+          <h4>Top Products</h4>
+          <ul>
+            <li><a href="#">Managed Website</a></li>
+            <li><a href="#">Manage Reputation</a></li>
+            <li><a href="#">Power Tools</a></li>
+            <li><a href="#">Marketing Service</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 single-footer-widget">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Brand Assets</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 single-footer-widget">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Brand Assets</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 single-footer-widget">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Guides</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Experts</a></li>
+            <li><a href="#">Agencies</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 single-footer-widget">
+          <h4>Newsletter</h4>
+          <p>You can trust us. we only send promo offers,</p>
+          <div class="form-wrap" id="mc_embed_signup">
+            <form target="_blank"
+              action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+              method="get" class="form-inline">
+              <input class="form-control" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Your Email Address '" required="" type="email">
+              <button class="click-btn btn btn-default">Subscribe</button>
+              <div style="position: absolute; left: -5000px;">
+                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+              </div>
+
+              <div class="info"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom row align-items-center">
+        <p class="footer-text m-0 col-lg-8 col-md-12">
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;
+          <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
+            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+        <div class="col-lg-4 col-md-12 footer-social">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-dribbble"></i></a>
+          <a href="#"><i class="fa fa-behance"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- <script
+    src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script> -->
+  <!-- <script>function initImageUpload(box) {
+      let uploadField = box.querySelector('.image-upload');
+
+      uploadField.addEventListener('change', getFile);
+
+      function getFile(e) {
+        let file = e.currentTarget.files[0];
+        checkType(file);
+      }
+
+      function previewImage(file) {
+        let thumb = box.querySelector('.js--image-preview'),
+          reader = new FileReader();
+
+        reader.onload = function () {
+          thumb.style.backgroundImage = 'url(' + reader.result + ')';
+        }
+        reader.readAsDataURL(file);
+        thumb.className += ' js--no-default';
+      }
+
+      function checkType(file) {
+        let imageType = /image.*/;
+        if (!file.type.match(imageType)) {
+          throw 'Datei ist kein Bild';
+        } else if (!file) {
+          throw 'Kein Bild gewählt';
+        } else {
+          previewImage(file);
+        }
+      }
+
+    }
+
+    // initialize box-scope
+    var boxes = document.querySelectorAll('.box');
+
+    for (let i = 0; i < boxes.length; i++) {
+      if (window.CP.shouldStopExecution(1)) { break; }
+      let box = boxes[i];
+      initDropEffect(box);
+      initImageUpload(box);
+    }
+    window.CP.exitedLoop(1);
+
+
+
+
+    /// drop-effect
+    function initDropEffect(box) {
+      let area, drop, areaWidth, areaHeight, maxDistance, dropWidth, dropHeight, x, y;
+
+      // get clickable area for drop effect
+      area = box.querySelector('.js--image-preview');
+      area.addEventListener('click', fireRipple);
+
+      function fireRipple(e) {
+        area = e.currentTarget
+        // create drop
+        if (!drop) {
+          drop = document.createElement('span');
+          drop.className = 'drop';
+          this.appendChild(drop);
+        }
+        // reset animate class
+        drop.className = 'drop';
+
+        // calculate dimensions of area (longest side)
+        areaWidth = getComputedStyle(this, null).getPropertyValue("width");
+        areaHeight = getComputedStyle(this, null).getPropertyValue("height");
+        maxDistance = Math.max(parseInt(areaWidth, 10), parseInt(areaHeight, 10));
+
+        // set drop dimensions to fill area
+        drop.style.width = maxDistance + 'px';
+        drop.style.height = maxDistance + 'px';
+
+        // calculate dimensions of drop
+        dropWidth = getComputedStyle(this, null).getPropertyValue("width");
+        dropHeight = getComputedStyle(this, null).getPropertyValue("height");
+
+        // calculate relative coordinates of click
+        // logic: click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center
+        x = e.pageX - this.offsetLeft - (parseInt(dropWidth, 10) / 2);
+        y = e.pageY - this.offsetTop - (parseInt(dropHeight, 10) / 2) - 30;
+
+        // position drop and animate
+        drop.style.top = y + 'px';
+        drop.style.left = x + 'px';
+        drop.className += ' animate';
+        e.stopPropagation();
+
+      }
+    }
+
+//# sourceURL=pen.js
+  </script> -->
+  <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+  <!-- <script>
+  $(document).ready(function() {
+    document.getElementById('multipleInput').addEventListener('change', readImage, false);
+    
+    // $( ".preview-images-zone" ).sortable();
+    
+    $(document).on('click', '.image-cancel', function() {
+        let no = $(this).data('no');
+        $(".preview-image.preview-show-"+no).remove();
+    });
+});
+
+
+
+var num = 4;
+function readImage() {
+    if (window.File && window.FileList && window.FileReader) {
+        var files = event.target.files; //FileList object
+        var output = $(".preview-images-zone");
+
+        for (let i = 0; i < files.length; i++) {
+            var file = files[i];
+            if (!file.type.match('image')) continue;
+            
+            var picReader = new FileReader();
+            
+            picReader.addEventListener('load', function (event) {
+                var picFile = event.target;
+                var html =  '<div class="preview-image preview-show-' + num + '">' +
+                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
+                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+                            '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
+                            '</div>';
+
+                output.append(html);
+                num = num + 1;
+            });
+
+            picReader.readAsDataURL(file);
+        }
+        $("#multipleInput").val('');
+    } else {
+        console.log('Browser not support');
+    }
+}
+  </script> -->
+  <script src="js/post_item.js" ></script>
+</body>
+
+</html>
