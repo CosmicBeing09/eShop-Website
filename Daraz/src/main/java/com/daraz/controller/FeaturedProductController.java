@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +32,7 @@ import com.daraz.obj.Product;
 import com.daraz.obj.Product_temp;
 import com.daraz.service.FeaturedProductService;
 import com.daraz.service.FileStorageService;
+import com.daraz.service.ProductService;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import org.slf4j.Logger;
@@ -50,6 +52,8 @@ public class FeaturedProductController {
 	private FeaturedProductService featuredProductService;
 	@Autowired
 	private ProductRepo productRepo;
+	@Autowired
+	private ProductService productService;
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET , value = "/allfeatured")
@@ -57,9 +61,41 @@ public class FeaturedProductController {
 
 		return featuredProductService.getall();
 	}
+	
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.GET , value = "/allproduct")
+	public List<Product_temp> getAllProduct(){
+
+		return productService.getall();
+	}
+	
 	@RequestMapping("/hi")
 	public String s(){
 		return "welcome";
+	}
+	
+	
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.GET , value = "/allproduct/{id}")
+	public Product_temp getOneProduct(@PathVariable String id){
+
+//		List<Product_temp> all = productService.getall();
+//		List<Product_temp> temp = new ArrayList<Product_temp>();
+//		for(int i=0;i<all.size();i++) {
+//			if(all.get(i).getId().equals(id)) {
+//				temp.add(all.get(i));
+//				break;
+//			}
+//		}
+		List<Product_temp> all = productService.getall();
+		Product_temp temp = new Product_temp();
+		for(int i=0;i<all.size();i++) {
+			if(all.get(i).getId().equals(id)) {
+				temp=all.get(i);
+				break;
+			}
+		}
+		return temp;
 	}
 	
 	@CrossOrigin
@@ -78,6 +114,15 @@ public class FeaturedProductController {
 	}
 	
 	@CrossOrigin
+	@RequestMapping(method = RequestMethod.DELETE , value = "/delete/{id}")
+	public String deleteOne(@PathVariable String id){
+
+		String result = productService.deleteOne(id);
+		return result;
+	}
+
+	
+	@CrossOrigin
 	@PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.storeFile(file);
@@ -86,7 +131,7 @@ public class FeaturedProductController {
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
-        arrayList.add(fileName);
+        arrayList.add(fileDownloadUri);
         return new UploadFileResponse(fileName, fileDownloadUri,
                 file.getContentType(), file.getSize());
     }
@@ -99,12 +144,62 @@ public class FeaturedProductController {
                 .map(file -> uploadFile(file))
                 .collect(Collectors.toList());
 		
+		if(arrayList.size()==1)
+		product_temp.setImage1(arrayList.get(0));
+		
+		else if(arrayList.size()==2) {
 		product_temp.setImage1(arrayList.get(0));
 		product_temp.setImage2(arrayList.get(1));
+		}
+		else if (arrayList.size()>2){
+		product_temp.setImage1(arrayList.get(0));
+		product_temp.setImage2(arrayList.get(1));	
 		product_temp.setImage3(arrayList.get(2));
+		}
 		
 		productRepo.save(product_temp);
         return list;
+    }
+	
+	@CrossOrigin
+	@PutMapping("/updateProduct")
+    public Product_temp updateProduct(@RequestPart("files") MultipartFile[] files,@RequestPart("product")Product_temp product_temp) {
+		List<UploadFileResponse> list = Arrays.asList(files)
+                .stream()
+                .map(file -> uploadFile(file))
+                .collect(Collectors.toList());
+		
+		List<Product_temp> all = productService.getall();
+		Product_temp temp = new Product_temp();
+		for(int i=0;i<all.size();i++) {
+			if(all.get(i).getId().equals(product_temp.getId())) {
+				temp = all.get(i);
+			}
+		}
+		if(arrayList.size()==0) {
+			product_temp.setImage1(temp.getImage1());
+			product_temp.setImage2(temp.getImage2());	
+			product_temp.setImage3(temp.getImage3());
+		}
+		else if(arrayList.size()==1) {
+		product_temp.setImage1(arrayList.get(0));
+		product_temp.setImage2(temp.getImage2());	
+		product_temp.setImage3(temp.getImage3());
+		}
+		
+		else if(arrayList.size()==2) {
+		product_temp.setImage1(arrayList.get(0));
+		product_temp.setImage2(arrayList.get(1));
+		product_temp.setImage3(temp.getImage3());
+		}
+		else if (arrayList.size()==3 || arrayList.size()>2){
+		product_temp.setImage1(arrayList.get(0));
+		product_temp.setImage2(arrayList.get(1));	
+		product_temp.setImage3(arrayList.get(2));
+		}
+		
+		productRepo.save(product_temp);
+        return product_temp;
     }
 
 	@CrossOrigin
