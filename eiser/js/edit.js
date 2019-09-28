@@ -1,3 +1,5 @@
+'use strict';
+var edit_button = document.querySelector('#edit_product_button');
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -5,9 +7,23 @@ function getUrlVars() {
     });
     return vars;
 }
-
 var id = getUrlVars()["id"];
-console.log(id)
+edit_button.addEventListener('click', function(event){
+  document.location.href = "update.html?id="+ id;
+  console.log(id)
+}, true);
+
+var delete_button = document.querySelector('#delete_product_button')
+delete_button.addEventListener('click', function(event){
+  var request1 = new XMLHttpRequest()
+  var url='http://localhost:8181/delete/' + id
+  request1.open('DELETE',url,true)
+  console.log(url)
+  request1.send()
+}, true);
+
+
+console.log(number)
 var request = new XMLHttpRequest()
 var link = 'http://localhost:8181/allproduct/' + id
 // Open a new connection, using the GET request on the URL endpoint
@@ -18,13 +34,13 @@ request.onload = function () {
 
     var data = JSON.parse(this.response)
     console.log(data)
-    
+    // data.forEach(movie => {
         // const smallimage1 = document.getElementById('smallimage1')
-        // smallimage1.src = movie.smallimage1
+        // smallimage1.src = movie.image1
         // const smallimage2 = document.getElementById('smallimage2')
-        // smallimage2.src = movie.smallimage2
+        // smallimage2.src = movie.image2
         // const smallimage3 = document.getElementById('smallimage3')
-        // smallimage3.src = movie.smallimage3
+        // smallimage3.src = movie.image3
 
         const image1 = document.getElementById('image1')
         const image2 = document.getElementById('image2')
@@ -56,5 +72,6 @@ request.onload = function () {
         const warrenty = document.getElementById('warrenty')
         warrenty.textContent = data.warrenty
 
+     // })
     }
-    request.send()
+    request.send();

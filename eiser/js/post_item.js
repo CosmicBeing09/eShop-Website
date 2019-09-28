@@ -1,9 +1,5 @@
 'use strict';
-
 var link = 'http://localhost:8181/uploadMultipleFiles'
-
-
-
 var multipleUploadForm = document.querySelector('#upload_product_button');
 var multipleFileUploadInput = document.querySelector('#multipleFileUploadInput');
 // var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
@@ -41,6 +37,8 @@ function uploadMultipleFiles(files) {
         "width" : width,
         "weight" : weight,
         "warrenty" : warrenty,
+        "type": "Regular",
+        "userId" : ""
 
     })], {
             type: "application/json",
@@ -72,10 +70,6 @@ function uploadMultipleFiles(files) {
 multipleUploadForm.addEventListener('click', function(event){
     var files = multipleFileUploadInput.files;
     console.log(files)
-    // if(files.length === 0) {
-    //     multipleFileUploadError.innerHTML = "Please select at least one file";
-    //     multipleFileUploadError.style.display = "block";
-    // }
     uploadMultipleFiles(files);
     event.preventDefault();
 }, true);
