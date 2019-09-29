@@ -1,19 +1,29 @@
 package com.daraz.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.mock.web.MockMultipartFile;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+
+import javax.imageio.ImageIO;
+
 import com.daraz.obj.FileStorageException;
 import com.daraz.obj.MyFileNotFoundException;
+
+import net.coobird.thumbnailator.Thumbnailator;
+import net.coobird.thumbnailator.Thumbnails;
 
 @Service
 public class FileStorageService {
@@ -32,6 +42,7 @@ public class FileStorageService {
         }
     }
 
+   
     public String storeFile(MultipartFile file) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -44,7 +55,13 @@ public class FileStorageService {
 
             // Copy file to the target location (Replacing existing file with the same name)
             Path targetLocation = this.fileStorageLocation.resolve(fileName);
-            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+            BufferedImage input = ImageIO.read(file.getInputStream());
+            BufferedImage output = Thumbnails.of(input).size(555,600).asBufferedImage();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(output, "png", baos);
+            baos.flush();
+            MultipartFile file_temp =new MockMultipartFile(fileName,baos.toByteArray());
+            Files.copy(file_temp.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
             return fileName;
         } catch (IOException ex) {
