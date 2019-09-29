@@ -21,9 +21,11 @@ request.onload = function () {
     single_product.appendChild(product_img)
     const img = document.createElement('img')
     img.setAttribute('class', 'img-fluid w-100')
+    
     img.src = movie.image1
     img.alt = ''
-    img.width='200px'
+    img.style.height="1000"
+    img.style.width="1000"
     product_img.appendChild(img)
     product_btm = document.createElement('div')
     product_btm.setAttribute('class', 'product-btm')
