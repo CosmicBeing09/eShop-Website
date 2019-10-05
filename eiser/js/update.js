@@ -6,7 +6,7 @@ function getUrlVars() {
     });
     return vars;
 }
-var link1 = 'http://localhost:8181/uploadMultipleFiles'
+var link1 = 'http://localhost:8181/uploadProduct'
 var update_button = document.querySelector('#update_product_button');
 var multipleFileUploadInput = document.querySelector('#update_multipleFileUploadInput');
 // var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
