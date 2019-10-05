@@ -1,9 +1,7 @@
 'use strict';
-var link = 'http://localhost:8181/uploadMultipleFiles'
-var multipleUploadForm = document.querySelector('#upload_product_button');
-var multipleFileUploadInput = document.querySelector('#multipleFileUploadInput');
-// var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
-// var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
+var link = 'http://localhost:8181/uploadProduct'
+var postItemButton = document.querySelector('#upload_product_button');
+var postItemPhotos = document.querySelector('#multipleFileUploadInput');
 
 
 function uploadMultipleFiles(files) {
@@ -67,8 +65,8 @@ function uploadMultipleFiles(files) {
     xhr.send(formData);
 }
 
-multipleUploadForm.addEventListener('click', function(event){
-    var files = multipleFileUploadInput.files;
+postItemButton.addEventListener('click', function(event){
+    var files = postItemPhotos.files;
     console.log(files)
     uploadMultipleFiles(files);
     event.preventDefault();
