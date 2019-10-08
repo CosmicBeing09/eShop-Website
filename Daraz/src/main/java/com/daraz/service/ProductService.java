@@ -25,4 +25,19 @@ public class ProductService {
 		productRepo.save(product_temp);
 		return "Updated";
 	}
+	
+	public List<Product_temp> getProductOfType(String type) {
+		List<Product_temp> all = new ArrayList<>();
+		productRepo.findAll().forEach(all::add);;
+		List<Product_temp> typedProduct = new ArrayList<Product_temp>();
+		for(int i=0;i<all.size();i++) {
+			if(typedProduct.size()>5)
+				break;
+			if(all.get(i).getType()!=null)
+			if(all.get(i).getType().equals(type))
+				typedProduct.add(all.get(i));
+			
+		}
+		return typedProduct;
+	}
 }

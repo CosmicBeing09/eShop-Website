@@ -16,7 +16,7 @@ request.onload = function () {
         const img = document.createElement('img')
         img.setAttribute('class','d-block w-100')
         img.src = temp.image
-        console.log(temp.image)
+        
         div_carousel_active.appendChild(img)
         carousel_inner.appendChild(div_carousel_active)
     })

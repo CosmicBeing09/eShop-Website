@@ -2,7 +2,7 @@
 var request = new XMLHttpRequest()
 
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'http://localhost:8181/allproduct_type/Featured', true)
+request.open('GET', 'http://localhost:8181/allproduct_type/New', true)
 
 request.onload = function () {
   // Begin accessing JSON data here
@@ -10,7 +10,7 @@ request.onload = function () {
   var data = JSON.parse(this.response)
   console.log(data)
   data.forEach(movie => {
-    const app = document.getElementById('featured-product')
+    const app = document.getElementById('new-product')
     const col = document.createElement('div')
     col.setAttribute('class', 'col-lg-4 col-md-6')
     app.appendChild(col)

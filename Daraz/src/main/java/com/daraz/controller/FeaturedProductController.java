@@ -56,6 +56,7 @@ public class FeaturedProductController {
 	//ArrayList contains the URL of the product images
 	public ArrayList<String>arrayList = new ArrayList<String>(); 
 	public ArrayList<String>sliderURL = new ArrayList<String>();
+	public ArrayList<String>arrayListSmallFile = new ArrayList<String>();
 	
 	private static final Logger logger = LoggerFactory.getLogger(FeaturedProductController.class);
 
@@ -149,13 +150,25 @@ public class FeaturedProductController {
 	@PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
 	    
+		
+		
         String fileName = fileStorageService.storeFile(file);
+        String smallFileName = fileStorageService.storeSmallFile(file);
        
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
-         arrayList.add(fileDownloadUri);
+        
+        arrayList.add(fileDownloadUri);
+        
+        
+        String smallFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(smallFileName)
+                .toUriString();
+        
+         arrayListSmallFile.add(smallFileDownloadUri);
         
         
         return new UploadFileResponse(fileName, fileDownloadUri,
@@ -165,22 +178,33 @@ public class FeaturedProductController {
 	@CrossOrigin
 	@PostMapping("/uploadProduct")
     public List<UploadFileResponse> uploadMultipleFiles(@RequestPart("files") MultipartFile[] files,@RequestPart("product")Product_temp product_temp) {
+		arrayList.clear();
+		arrayListSmallFile.clear();
+		
 		List<UploadFileResponse> list = Arrays.asList(files)
                 .stream()
                 .map(file -> uploadFile(file))
                 .collect(Collectors.toList());
 		
-		if(arrayList.size()==1)
+		if(arrayList.size()==1) {
 		product_temp.setImage1(arrayList.get(0));
-		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		}
 		else if(arrayList.size()==2) {
 		product_temp.setImage1(arrayList.get(0));
 		product_temp.setImage2(arrayList.get(1));
+		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		product_temp.setSmallImage2(arrayListSmallFile.get(1));
 		}
 		else if (arrayList.size()>2){
 		product_temp.setImage1(arrayList.get(0));
 		product_temp.setImage2(arrayList.get(1));	
 		product_temp.setImage3(arrayList.get(2));
+		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		product_temp.setSmallImage2(arrayListSmallFile.get(1));
+		product_temp.setSmallImage3(arrayListSmallFile.get(2));
 		}
 		
 		productRepo.save(product_temp);
@@ -312,4 +336,10 @@ public class FeaturedProductController {
 		return result;
 	}
 	
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.GET , value = "/allproduct_type/{type}")
+	public List<Product_temp> getProductOfType(@PathVariable String type){
+
+		return productService.getProductOfType(type);
+	}
 }

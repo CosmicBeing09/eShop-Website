@@ -1,4 +1,4 @@
-var link = 'http://localhost:8181/uploadSlider'
+var link_slider = 'http://localhost:8181/uploadSlider'
 var sliderUploadButton = document.querySelector('#upload_slider_button')
 var sliderInput = document.querySelector('#sliderUploadInput')
 
@@ -8,7 +8,7 @@ function uploadSlider(files){
         formData.append("files", files[index]);
     }
     var xhr = new XMLHttpRequest();
-    xhr.open("POST",link,true);
+    xhr.open("POST",link_slider,true);
 
     xhr.onload = function() {
         console.log(xhr.responseText);

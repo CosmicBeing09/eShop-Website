@@ -43,8 +43,6 @@ function uploadMultipleFiles(files) {
             processData: false, contentType: false, cache: false
         }));
     var xhr = new XMLHttpRequest();
-    
-
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           // Here we go on the new page
