@@ -14,7 +14,7 @@ var multipleFileUploadInput = document.querySelector('#update_multipleFileUpload
 
 var id = getUrlVars()["id"];
 var request = new XMLHttpRequest()
-console.log(id)
+//console.log(id)
 var link = 'http://localhost:8181/allproduct/' + id
 var link2 = 'http://localhost:8181/updateProduct/'
 // Open a new connection, using the GET request on the URL endpoint
@@ -24,8 +24,8 @@ request.onload = function () {
   // Begin accessing JSON data here
 
     var data = JSON.parse(this.response)
-    console.log(data)
-    console.log(data.name)
+    // console.log(data)
+    // console.log(data.name)
   //  data.forEach(movie => {
         const name = document.getElementById('update_product_name')
         name.value = data.name
@@ -37,7 +37,7 @@ request.onload = function () {
         details.value = data.details
         const brand = document.getElementById('update_procuct_brand')
         brand.value = data.brand
-        console.log(data.brand)
+      //  console.log(data.brand)
         const model = document.getElementById('update_procuct_model')
         model.value = data.model
         const height = document.getElementById('update_procuct_height')
@@ -62,10 +62,10 @@ function uploadMultipleFiles(files) {
     for(var index = 0; index < files.length; index++) {
         formData.append("files", files[index]);
     }
-    console.log(document.getElementById("update_price").value)
-    console.log(document.getElementById("update_discount_price").value)
-    console.log(document.getElementById("update_procuct_brand").value)
-    console.log(document.getElementById("update_procuct_model").value)
+    // console.log(document.getElementById("update_price").value)
+    // console.log(document.getElementById("update_discount_price").value)
+    // console.log(document.getElementById("update_procuct_brand").value)
+    // console.log(document.getElementById("update_procuct_model").value)
     var brand=  document.getElementById("update_procuct_brand").value
     var model = document.getElementById("update_procuct_model").value
     var height = document.getElementById("update_procuct_height").value
@@ -74,7 +74,7 @@ function uploadMultipleFiles(files) {
     var warrenty = document.getElementById("update_procuct_warrenty").value
    
 
-    console.log(document.getElementById("update_procuct_model").value)
+   // console.log(document.getElementById("update_procuct_model").value)
     var e = document.getElementById("update_category");
     var category = e.options[e.selectedIndex].text;
     var temp = document.getElementById('update_type');
@@ -101,29 +101,20 @@ function uploadMultipleFiles(files) {
     var xhr = new XMLHttpRequest();
     xhr.open("PUT",link2,true);
 
-    xhr.onload = function() {
-        console.log(xhr.responseText);
-        var response = JSON.parse(xhr.responseText);
-        // if(xhr.status == 200) {
-        //     multipleFileUploadError.style.display = "none";
-        //     var content = "<p>All Files Uploaded Successfully</p>";
-        //     for(var i = 0; i < response.length; i++) {
-        //         content += "<p>DownloadUrl : <a href='" + response[i].fileDownloadUri + "' target='_blank'>" + response[i].fileDownloadUri + "</a></p>";
-        //     }
-        //     multipleFileUploadSuccess.innerHTML = content;
-        //     multipleFileUploadSuccess.style.display = "block";
-        // } else {
-        //     multipleFileUploadSuccess.style.display = "none";
-        //     multipleFileUploadError.innerHTML = (response && response.message) || "Some Error Occurred";
-        // }
-    }
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // Here we go on the new page
+          alert("Successfully Updated")
+          window.location = "shop_category.html";
+        }
+      };
 
     xhr.send(formData);
 }
 
 update_button.addEventListener('click', function(event){
     var files = multipleFileUploadInput.files;
-    console.log(files)
+    //console.log(files)
     uploadMultipleFiles(files);
     event.preventDefault();
 }, true);

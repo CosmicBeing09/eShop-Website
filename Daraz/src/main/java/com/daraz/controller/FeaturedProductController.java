@@ -214,6 +214,9 @@ public class FeaturedProductController {
 	@CrossOrigin
 	@PutMapping("/updateProduct")
     public Product_temp updateProduct(@RequestPart("files") MultipartFile[] files,@RequestPart("product")Product_temp product_temp) {
+		arrayList.clear();
+		arrayListSmallFile.clear();
+		
 		List<UploadFileResponse> list = Arrays.asList(files)
                 .stream()
                 .map(file -> uploadFile(file))
@@ -230,22 +233,38 @@ public class FeaturedProductController {
 			product_temp.setImage1(temp.getImage1());
 			product_temp.setImage2(temp.getImage2());	
 			product_temp.setImage3(temp.getImage3());
+			
+			product_temp.setSmallImage1(temp.getSmallImage1());
+			product_temp.setSmallImage2(temp.getSmallImage2());
+			product_temp.setSmallImage3(temp.getSmallImage3());
 		}
 		else if(arrayList.size()==1) {
 		product_temp.setImage1(arrayList.get(0));
 		product_temp.setImage2(temp.getImage2());	
 		product_temp.setImage3(temp.getImage3());
+		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		product_temp.setSmallImage2(temp.getSmallImage2());
+		product_temp.setSmallImage3(temp.getSmallImage3());
 		}
 		
 		else if(arrayList.size()==2) {
 		product_temp.setImage1(arrayList.get(0));
 		product_temp.setImage2(arrayList.get(1));
 		product_temp.setImage3(temp.getImage3());
+		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		product_temp.setSmallImage2(arrayListSmallFile.get(1));
+		product_temp.setSmallImage3(temp.getSmallImage3());
 		}
 		else if (arrayList.size()==3 || arrayList.size()>2){
 		product_temp.setImage1(arrayList.get(0));
 		product_temp.setImage2(arrayList.get(1));	
 		product_temp.setImage3(arrayList.get(2));
+		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		product_temp.setSmallImage2(arrayListSmallFile.get(1));
+		product_temp.setSmallImage3(arrayListSmallFile.get(2));
 		}
 		
 		productRepo.save(product_temp);
@@ -287,7 +306,8 @@ public class FeaturedProductController {
 		mailMessage.setSubject("Order on product: "+mailBody.getProductName());
 		mailMessage.setFrom("nonlovesme@gmail.com");
 		mailMessage.setText("Ordered from phone number: "+mailBody.getPhoneNo()+"."+"\n" +
-		"Address: "+mailBody.getAddress());
+		"Address: "+mailBody.getAddress()+"\n"+"Product Name: "+mailBody.getProductName()
+		+"\n"+"Price: "+mailBody.getPrice());
 		emailSenderService.sendEmail(mailMessage);
 		return "success";
 	}
@@ -310,6 +330,7 @@ public class FeaturedProductController {
 	@CrossOrigin
 	@PostMapping("/uploadSlider")
 	public List<UploadFileResponse> uploadSlider(@RequestPart("files")MultipartFile[] files){
+		sliderURL.clear();
 		List<UploadFileResponse> list = Arrays.asList(files)
                 .stream()
                 .map(file -> uploadSlide(file))

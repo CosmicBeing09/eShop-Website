@@ -7,7 +7,7 @@ function getUrlVars() {
 }
 
 var id = getUrlVars()["id"];
-console.log(id)
+//console.log(id)
 var request = new XMLHttpRequest()
 var link = 'http://localhost:8181/allproduct/' + id
 // Open a new connection, using the GET request on the URL endpoint
@@ -17,7 +17,7 @@ request.onload = function () {
   // Begin accessing JSON data here
 
     var data = JSON.parse(this.response)
-    console.log(data)
+   // console.log(data)
     
         const image1 = document.getElementById('image1')
         const image2 = document.getElementById('image2')
@@ -31,13 +31,18 @@ request.onload = function () {
         const smallimage3 = document.getElementById('smallimage3')
         smallimage1.src = data.smallImage1
         smallimage2.src = data.smallImage2
-        console.log(data.smallImage2)
+      //  console.log(data.smallImage2)
         smallimage3.src = data.smallImage3
         
         const product_name = document.getElementById('product-name')
         const product_price = document.getElementById('product-price')
         product_name.textContent = data.name
+        if(data.discountPrice.length!=0){
+        product_price.textContent =  data.discountPrice + ' Taka'
+        }
+        else{
         product_price.textContent =  data.price + ' Taka'
+        }
         const product_description = document.getElementById('description')
         product_description.textContent = data.details
         const details = document.getElementById('details')

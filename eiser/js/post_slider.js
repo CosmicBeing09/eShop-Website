@@ -10,10 +10,13 @@ function uploadSlider(files){
     var xhr = new XMLHttpRequest();
     xhr.open("POST",link_slider,true);
 
-    xhr.onload = function() {
-        console.log(xhr.responseText);
-        var response = JSON.parse(xhr.responseText);
-    }
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // Here we go on the new page
+          window.location = "post_item.html";
+          alert("Slide Upload Done")
+        }
+      };
 
     xhr.send(formData);
 }

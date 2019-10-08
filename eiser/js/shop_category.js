@@ -83,10 +83,22 @@ request.onload = function () {
     const mtt = document.createElement('div')
     mtt.setAttribute('class', 'mt-3')
     product_btm.appendChild(mtt)
-    const sp = document.createElement('span')
-    sp.setAttribute('class', 'mr-4')
-    sp.textContent =  movie.price + ' taka'
-    mtt.appendChild(sp)
+    if (movie.discountPrice.length != 0) {
+      const sp = document.createElement('span')
+      sp.setAttribute('class', 'mr-4')
+      sp.textContent = movie.discountPrice + ' Taka'
+      mtt.appendChild(sp)
+
+      const del = document.createElement('del')
+      del.textContent = movie.price + ' Taka'
+      mtt.appendChild(del)
+    }
+    else {
+      const sp = document.createElement('span')
+      sp.setAttribute('class', 'mr-4')
+      sp.textContent = movie.price + ' Taka'
+      mtt.appendChild(sp)
+    }
     }
     else if(category===movie.category){
       const app = document.getElementById('category-product')
@@ -155,10 +167,22 @@ request.onload = function () {
       const mtt = document.createElement('div')
       mtt.setAttribute('class', 'mt-3')
       product_btm.appendChild(mtt)
-      const sp = document.createElement('span')
-      sp.setAttribute('class', 'mr-4')
-      sp.textContent =  movie.price + ' taka'
-      mtt.appendChild(sp)
+      if (movie.discountPrice.length != 0) {
+        const sp = document.createElement('span')
+        sp.setAttribute('class', 'mr-4')
+        sp.textContent = movie.discountPrice + ' Taka'
+        mtt.appendChild(sp)
+
+        const del = document.createElement('del')
+        del.textContent = movie.price + ' Taka'
+        mtt.appendChild(del)
+      }
+      else {
+        const sp = document.createElement('span')
+        sp.setAttribute('class', 'mr-4')
+        sp.textContent = movie.price + ' Taka'
+        mtt.appendChild(sp)
+      }
     }
   })
 }
