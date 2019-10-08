@@ -79,7 +79,7 @@ public class FileStorageService {
         String[] temp = fileName.split("[.]", 2);
         temp[0]=temp[0]+"small";
         fileName = temp[0]+"."+temp[1];
-        System.out.println(fileName);
+        //System.out.println(fileName);
 
         try {
             // Check if the file's name contains invalid characters

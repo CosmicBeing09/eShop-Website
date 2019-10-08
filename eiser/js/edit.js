@@ -10,7 +10,7 @@ function getUrlVars() {
 var id = getUrlVars()["id"];
 edit_button.addEventListener('click', function(event){
   document.location.href = "update.html?id="+ id;
-  console.log(id)
+  //console.log(id)
 }, true);
 
 var delete_button = document.querySelector('#delete_product_button')
@@ -18,7 +18,15 @@ delete_button.addEventListener('click', function(event){
   var request1 = new XMLHttpRequest()
   var url='http://localhost:8181/delete/' + id
   request1.open('DELETE',url,true)
-  console.log(url)
+  request1.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // Here we go on the new page
+      alert("Deleted")
+      window.location = "shop_category.html";
+      
+    }
+  };
+  //console.log(url)
   request1.send()
 }, true);
 
@@ -32,7 +40,7 @@ request.onload = function () {
   // Begin accessing JSON data here
 
     var data = JSON.parse(this.response)
-    console.log(data)
+   // console.log(data)
     // data.forEach(movie => {
         // const smallimage1 = document.getElementById('smallimage1')
         // smallimage1.src = movie.image1
@@ -51,7 +59,12 @@ request.onload = function () {
         const product_name = document.getElementById('product-name')
         const product_price = document.getElementById('product-price')
         product_name.textContent = data.name
+        if(data.discountPrice.length!=0){
+        product_price.textContent =  data.discountPrice + ' Taka'
+        }
+        else{
         product_price.textContent =  data.price + ' Taka'
+        }
         const product_description = document.getElementById('description')
         product_description.textContent = data.details
         const details = document.getElementById('details')

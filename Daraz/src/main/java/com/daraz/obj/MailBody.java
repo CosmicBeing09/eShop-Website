@@ -20,13 +20,17 @@ private String id;
 private String address;
 private String productName;
 private String phoneNo;
+private String price;
 private Date date;
-public MailBody(String id, String address, String productName, String phoneNo, Date date) {
+
+
+public MailBody(String id, String address, String productName, String phoneNo, String price, Date date) {
 	super();
 	this.id = id;
 	this.address = address;
 	this.productName = productName;
 	this.phoneNo = phoneNo;
+	this.price = price;
 	this.date = date;
 }
 
@@ -63,6 +67,14 @@ public Date getDate() {
 }
 public void setDate(Date date) {
 	this.date = date;
+}
+
+public String getPrice() {
+	return price;
+}
+
+public void setPrice(String price) {
+	this.price = price;
 }
 
 }

@@ -9,10 +9,10 @@ function uploadMultipleFiles(files) {
     for(var index = 0; index < files.length; index++) {
         formData.append("files", files[index]);
     }
-    console.log(document.getElementById("price").value)
-    console.log(document.getElementById("discount_price").value)
-    console.log(document.getElementById("procuct_brand").value)
-    console.log(document.getElementById("procuct_model").value)
+    // console.log(document.getElementById("price").value)
+    // console.log(document.getElementById("discount_price").value)
+    // console.log(document.getElementById("procuct_brand").value)
+    // console.log(document.getElementById("procuct_model").value)
     var brand=  document.getElementById("procuct_brand").value
     var model = document.getElementById("procuct_model").value
     var height = document.getElementById("procuct_height").value
@@ -20,7 +20,7 @@ function uploadMultipleFiles(files) {
     var weight = document.getElementById("procuct_weight").value
     var warrenty = document.getElementById("procuct_warrenty").value
 
-    console.log(document.getElementById("procuct_model").value)
+   // console.log(document.getElementById("procuct_model").value)
     var e = document.getElementById("category");
     var category = e.options[e.selectedIndex].text;
     formData.append("product", new Blob([JSON.stringify({
@@ -43,20 +43,22 @@ function uploadMultipleFiles(files) {
             processData: false, contentType: false, cache: false
         }));
     var xhr = new XMLHttpRequest();
+    xhr.open("POST",link,true);
+    xhr.send(formData);
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           // Here we go on the new page
-          window.location = "http://localhost/eiser/index.html";
+          window.location = "post_item.html";
           alert("UPLOAD DONE")
         }
       };
-    xhr.open("POST",link,true);
-    xhr.send(formData);
+    
+  
 }
 
 postItemButton.addEventListener('click', function(event){
     var files = postItemPhotos.files;
-    console.log(files)
+   /// console.log(files)
     uploadMultipleFiles(files);
     event.preventDefault();
 }, true);
