@@ -46,8 +46,9 @@ function uploadMultipleFiles(files) {
     xhr.open("POST",link,true);
 
     xhr.onload = function() {
-        console.log(xhr.responseText);
+       // console.log(xhr.responseText);
         var response = JSON.parse(xhr.responseText);
+        console.log(xhr.responseText)
         // if(xhr.status == 200) {
         //     multipleFileUploadError.style.display = "none";
         //     var content = "<p>All Files Uploaded Successfully</p>";

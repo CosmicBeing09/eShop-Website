@@ -23,7 +23,6 @@ delete_button.addEventListener('click', function(event){
 }, true);
 
 
-console.log(number)
 var request = new XMLHttpRequest()
 var link = 'http://localhost:8181/allproduct/' + id
 // Open a new connection, using the GET request on the URL endpoint

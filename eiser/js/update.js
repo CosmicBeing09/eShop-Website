@@ -49,7 +49,7 @@ request.onload = function () {
         const warrenty = document.getElementById('update_procuct_warrenty')
         warrenty.value = data.warrenty
         const category = document.getElementById('update_category')
-        category.value = data.category
+        category.selectedIndex = data.category
      // })
     }
     request.send();
@@ -72,10 +72,13 @@ function uploadMultipleFiles(files) {
     var width = document.getElementById("update_procuct_width").value
     var weight = document.getElementById("update_procuct_weight").value
     var warrenty = document.getElementById("update_procuct_warrenty").value
+   
 
     console.log(document.getElementById("update_procuct_model").value)
     var e = document.getElementById("update_category");
     var category = e.options[e.selectedIndex].text;
+    var temp = document.getElementById('update_type');
+    var type = temp.options[temp.selectedIndex].text;
     formData.append("product", new Blob([JSON.stringify({
         "id":id,
         "name": document.getElementById("update_product_name").value,
@@ -89,6 +92,7 @@ function uploadMultipleFiles(files) {
         "width" : width,
         "weight" : weight,
         "warrenty" : warrenty,
+        "type" : type,
 
     })], {
             type: "application/json",
