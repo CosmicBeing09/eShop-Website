@@ -1,5 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+  * {
+    margin: 0px;
+    padding: 0px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  /* Full-width input fields */
+  input[type=text],
+  input[type=password] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 26px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  /* Set a style for all buttons */
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 26px;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    font-size: 20px;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  /* Center the image and position the close button */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+
+  /* The Modal (background) */
+
+
+  /* Modal Content Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 4% auto 15% auto;
+    border: 1px solid #888;
+    width: 40%;
+    padding-bottom: 30px;
+  }
+
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+
+  /* Add Zoom Animation */
+  .animate {
+    animation: zoom 0.6s
+  }
+
+  @keyframes zoom {
+    from {
+      transform: scale(0)
+    }
+
+    to {
+      transform: scale(1)
+    }
+  }
+</style>
+</style>
 
 <head>
   <!-- Required meta tags -->
@@ -134,8 +226,13 @@
                     </a>
                   </li>
 
-                  <li class="nav-item">
-                    <a href="#" class="icons">
+                 
+
+
+                  <li onclick="document.getElementById('modal-wrapper').style.display='block'" style="cursor: pointer;"
+                    class="nav-item">
+                    <a class="icons">
+
                       <i class="ti-user" aria-hidden="true"></i>
                     </a>
                   </li>
@@ -153,6 +250,76 @@
       </div>
     </div>
   </header>
+
+  <!--  Login Pop Up -->
+
+  <script type="text/javascript">
+    function submitform() {
+      const username = document.getElementById("login_username").value;
+          const password = document.getElementById("login_password").value;
+          
+          var myurl = "http://localhost:8181/login"
+        //   setCookie("username", username, 365);
+          var xhr = new XMLHttpRequest();
+    
+          var data;
+
+          xhr.open("POST", myurl, false);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          data = JSON.stringify({"username": username, "password": password});
+          var response;
+          xhr.onload = function() {
+            if ( this.status == 200) {
+              // Here we go on the new page
+              var jsonResponse = JSON.parse(this.response);
+              if(jsonResponse.username != "NULL"){
+                window.localStorage.setItem('user', JSON.stringify(jsonResponse));
+                window.location.replace("http://localhost/eiser/test.html");
+              }
+              else{
+                  alert("Wrong Username or Password");
+              }
+              
+            }
+          };
+          
+    
+          xhr.send(data);
+
+      
+    }
+  </script>
+
+  <h1 style="text-align:center; font-size:50px; color:#fff">Modal Popup Box Login Form</h1>
+
+
+
+  <div id="modal-wrapper" class="modal">
+
+    <form name="myForm" method="POST"  class="modal-content animate">
+
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close"
+          title="Close PopUp">&times;</span>
+        <img src="img/1.png" alt="Avatar" class="avatar">
+        <h1 style="text-align:center">Modal Popup Box</h1>
+      </div>
+
+      <div class="container" id="login">
+        <input type="text" placeholder="Enter Username" id = "login_username">
+        <input type="password" placeholder="Enter Password" id = "login_password">
+        <button type="button" onclick="submitform()">Login</button>
+        <input type="checkbox" style="margin:26px 30px;"> Remember me
+        <a href="#" style="text-decoration:none; float:right; margin-right:34px; margin-top:26px;">Forgot Password ?</a>
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <!--  END POP UP LOGIN -->
+
   <!--================Header Menu Area =================-->
 
   <!-- <section class="home_banner_area mb-40"> -->
