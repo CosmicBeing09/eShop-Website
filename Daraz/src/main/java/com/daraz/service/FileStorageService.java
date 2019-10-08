@@ -46,6 +46,10 @@ public class FileStorageService {
     public String storeFile(MultipartFile file) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+//        String[] temp = fileName.split("[.]", 2);
+//        temp[0]=temp[0]+"small";
+//        String fina_l = temp[0]+"."+temp[1];
+//        System.out.println(fina_l);
 
         try {
             // Check if the file's name contains invalid characters
@@ -57,6 +61,62 @@ public class FileStorageService {
             Path targetLocation = this.fileStorageLocation.resolve(fileName);
             BufferedImage input = ImageIO.read(file.getInputStream());
             BufferedImage output = Thumbnails.of(input).size(555,600).asBufferedImage();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(output, "png", baos);
+            baos.flush();
+            MultipartFile file_temp =new MockMultipartFile(fileName,baos.toByteArray());
+            Files.copy(file_temp.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+
+            return fileName;
+        } catch (IOException ex) {
+            throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
+        }
+    }
+    
+    public String storeSmallFile(MultipartFile file) {
+        // Normalize file name
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String[] temp = fileName.split("[.]", 2);
+        temp[0]=temp[0]+"small";
+        fileName = temp[0]+"."+temp[1];
+        System.out.println(fileName);
+
+        try {
+            // Check if the file's name contains invalid characters
+            if(fileName.contains("..")) {
+                throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
+            }
+
+            // Copy file to the target location (Replacing existing file with the same name)
+            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            BufferedImage input = ImageIO.read(file.getInputStream());
+            BufferedImage output = Thumbnails.of(input).size(60,60).asBufferedImage();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(output, "png", baos);
+            baos.flush();
+            MultipartFile file_temp =new MockMultipartFile(fileName,baos.toByteArray());
+            Files.copy(file_temp.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+
+            return fileName;
+        } catch (IOException ex) {
+            throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
+        }
+    }
+    
+    public String storeSlide(MultipartFile file) {
+        // Normalize file name
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
+        try {
+            // Check if the file's name contains invalid characters
+            if(fileName.contains("..")) {
+                throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
+            }
+
+            // Copy file to the target location (Replacing existing file with the same name)
+            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            BufferedImage input = ImageIO.read(file.getInputStream());
+            BufferedImage output = Thumbnails.of(input).size(3860,3060).asBufferedImage();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(output, "png", baos);
             baos.flush();

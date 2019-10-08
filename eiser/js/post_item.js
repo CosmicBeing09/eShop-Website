@@ -1,9 +1,7 @@
 'use strict';
-var link = 'http://localhost:8181/uploadMultipleFiles'
-var multipleUploadForm = document.querySelector('#upload_product_button');
-var multipleFileUploadInput = document.querySelector('#multipleFileUploadInput');
-// var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
-// var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
+var link = 'http://localhost:8181/uploadProduct'
+var postItemButton = document.querySelector('#upload_product_button');
+var postItemPhotos = document.querySelector('#multipleFileUploadInput');
 
 
 function uploadMultipleFiles(files) {
@@ -45,30 +43,19 @@ function uploadMultipleFiles(files) {
             processData: false, contentType: false, cache: false
         }));
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // Here we go on the new page
+          window.location = "http://localhost/eiser/index.html";
+          alert("UPLOAD DONE")
+        }
+      };
     xhr.open("POST",link,true);
-
-    xhr.onload = function() {
-        console.log(xhr.responseText);
-        var response = JSON.parse(xhr.responseText);
-        // if(xhr.status == 200) {
-        //     multipleFileUploadError.style.display = "none";
-        //     var content = "<p>All Files Uploaded Successfully</p>";
-        //     for(var i = 0; i < response.length; i++) {
-        //         content += "<p>DownloadUrl : <a href='" + response[i].fileDownloadUri + "' target='_blank'>" + response[i].fileDownloadUri + "</a></p>";
-        //     }
-        //     multipleFileUploadSuccess.innerHTML = content;
-        //     multipleFileUploadSuccess.style.display = "block";
-        // } else {
-        //     multipleFileUploadSuccess.style.display = "none";
-        //     multipleFileUploadError.innerHTML = (response && response.message) || "Some Error Occurred";
-        // }
-    }
-
     xhr.send(formData);
 }
 
-multipleUploadForm.addEventListener('click', function(event){
-    var files = multipleFileUploadInput.files;
+postItemButton.addEventListener('click', function(event){
+    var files = postItemPhotos.files;
     console.log(files)
     uploadMultipleFiles(files);
     event.preventDefault();

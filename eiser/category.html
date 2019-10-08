@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="icon" href="img/favicon.png" type="image/png" />
-    <title>Eiser ecommerce</title>
+    <title>PRODA5.com</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="vendors/linericon/style.css" />
@@ -207,27 +207,57 @@
                 </div>
                 <div class="widgets_inner">
                   <ul class="list">
+                      <li>
+                          <a href="category.html" >All</a>
+                      </li>
+                        <div class="l_w_title">
+                            <h6>Fashion</h6>
+                            <p></p>
+                       </div>
                     <li>
-                      <a href="#">Gadgets</a>
+                      <a href="category.html?category=Perfume" >Perfume</a>
                     </li>
                     <li>
-                      <a href="#">Cloths</a>
+                      <a href="category.html?category=Shirt">Shirt</a>
                     </li>
                     <li>
-                      <a href="#">Headphones</a>
+                      <a href="category.html?category=Pant">Pant</a>
                     </li>
                     <li>
-                      <a href="#">Furniture</a>
-                    </li>
-                    <!-- <li>
-                      <a href="#">Fresh Fish</a>
+                        <a href="category.html?category=Panjabi">Panjabi</a>
                     </li>
                     <li>
-                      <a href="#">Meat Alternatives</a>
+                        <a href="category.html?category=Shoe">Shoe</a>
                     </li>
                     <li>
-                      <a href="#">Meat</a>
-                    </li> -->
+                        <a href="category.html?category=Ladies">Ladies Collection</a>
+                    </li>
+                    <li>
+                        <a href="category.html?category=Kids">Kids Collection</a>
+                    </li>
+                    <li>
+                        <a href="category.html?category=Cosmatics">Cosmatics</a>
+                    </li>
+                    <div class="l_w_title">
+                        <h6>Gadget</h6>
+                        <p></p>
+                   </div>
+                   <li>
+                      <a href="category.html?category=Mobile">Mobile Accessories</a>
+                  </li>
+                  <li>
+                      <a href="category.html?category=Computer">Computer Accessories</a>
+                  </li>
+                  <div class="l_w_title">
+                      <h6>Others</h6>
+                      <p></p>
+                 </div>
+                 <li>
+                    <a href="category.html?category=Electronics">Electronics</a>
+                </li>
+                <li>
+                    <a href="category.html?category=Furniture">Furniture</a>
+                </li>
                   </ul>
                 </div>
               </aside>
@@ -280,7 +310,7 @@
                     </li>
                   </ul>
                 </div>
-              </aside>
+              </aside> -->
 
               <aside class="left_widgets p_filter_widgets">
                 <div class="l_w_title">
@@ -295,7 +325,7 @@
                     </div>
                   </div>
                 </div>
-              </aside> -->
+              </aside>
             </div>
           </div>
         </div>
@@ -397,5 +427,55 @@
     <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
     <script src="vendors/counter-up/jquery.counterup.js"></script>
     <script src="js/theme.js"></script>
+    <script>
+      //filterSelection("all")
+      function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("product");
+        const temp = document.getElementById("category-product");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+          //x[i].style.display="none"
+          //console.log(x[i].style.display)
+          w3RemoveClass(x[i], temp)
+          
+          if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+      }
+      
+      function w3AddClass(element, name) {
+        // var i, arr1, arr2;
+        // arr1 = element.className.split(" ");
+        // arr2 = name.split(" ");
+        // for (i = 0; i < arr2.length; i++) {
+        //   if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+          
+        // }
+        element.style.display=""
+        console.log(element)
+      }
+      
+      function w3RemoveClass(element, name) {
+       // element.style.display="none"
+       name.remove(element)
+        // const temp = element.parentNode
+        // const temp1 = temp.parentNode
+        // console.log(temp1)
+        // temp1.style.display="none"
+        // var i, arr1, arr2;
+        // arr1 = element.className.split(" ");
+        // console.log("arr1 "+arr1)
+        // arr2 = name.split(" ");
+        // console.log("arr2 "+arr2)
+        // for (i = 0; i < arr2.length; i++) {
+        //   while (arr1.indexOf(arr2[i]) > -1) {
+        //     arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        //   }
+        // }
+        // element.className = arr1.join(" ");
+        // console.log(element.className)
+      }
+      </script>
+      
   </body>
 </html>

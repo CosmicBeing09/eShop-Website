@@ -1,6 +1,8 @@
 package com.daraz.controller;
 
 import java.io.IOException;
+
+import com.daraz.service.EmailSenderService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,6 +11,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,23 +31,33 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.*;
 import com.daraz.obj.UploadFileResponse;
+import com.daraz.repo.HomeSliderRepo;
+import com.daraz.repo.MailBodyRepo;
 import com.daraz.repo.ProductRepo;
+import com.daraz.obj.HomeSlider;
+import com.daraz.obj.MailBody;
 import com.daraz.obj.Product;
 import com.daraz.obj.Product_temp;
 import com.daraz.service.FeaturedProductService;
 import com.daraz.service.FileStorageService;
+import com.daraz.service.HomeSliderService;
 import com.daraz.service.ProductService;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 public class FeaturedProductController {
+	//ArrayList contains the URL of the product images
 	public ArrayList<String>arrayList = new ArrayList<String>(); 
+	public ArrayList<String>sliderURL = new ArrayList<String>();
+	public ArrayList<String>arrayListSmallFile = new ArrayList<String>();
+	
 	private static final Logger logger = LoggerFactory.getLogger(FeaturedProductController.class);
 
     @Autowired
@@ -54,6 +68,14 @@ public class FeaturedProductController {
 	private ProductRepo productRepo;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private EmailSenderService emailSenderService;
+	@Autowired
+	private MailBodyRepo mailBodyRepo;
+	@Autowired
+	private HomeSliderRepo homeSliderRepo;
+	@Autowired
+	private HomeSliderService homeSliderService;
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET , value = "/allfeatured")
@@ -68,6 +90,8 @@ public class FeaturedProductController {
 
 		return productService.getall();
 	}
+	
+	
 	
 	@RequestMapping("/hi")
 	public String s(){
@@ -126,36 +150,61 @@ public class FeaturedProductController {
 	@PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
 	    
+		
+		
         String fileName = fileStorageService.storeFile(file);
+        String smallFileName = fileStorageService.storeSmallFile(file);
        
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
                 .path(fileName)
                 .toUriString();
+        
         arrayList.add(fileDownloadUri);
+        
+        
+        String smallFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(smallFileName)
+                .toUriString();
+        
+         arrayListSmallFile.add(smallFileDownloadUri);
+        
+        
         return new UploadFileResponse(fileName, fileDownloadUri,
                 file.getContentType(), file.getSize());
     }
 	
 	@CrossOrigin
-	@PostMapping("/uploadMultipleFiles")
+	@PostMapping("/uploadProduct")
     public List<UploadFileResponse> uploadMultipleFiles(@RequestPart("files") MultipartFile[] files,@RequestPart("product")Product_temp product_temp) {
+		arrayList.clear();
+		arrayListSmallFile.clear();
+		
 		List<UploadFileResponse> list = Arrays.asList(files)
                 .stream()
                 .map(file -> uploadFile(file))
                 .collect(Collectors.toList());
 		
-		if(arrayList.size()==1)
+		if(arrayList.size()==1) {
 		product_temp.setImage1(arrayList.get(0));
-		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		}
 		else if(arrayList.size()==2) {
 		product_temp.setImage1(arrayList.get(0));
 		product_temp.setImage2(arrayList.get(1));
+		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		product_temp.setSmallImage2(arrayListSmallFile.get(1));
 		}
 		else if (arrayList.size()>2){
 		product_temp.setImage1(arrayList.get(0));
 		product_temp.setImage2(arrayList.get(1));	
 		product_temp.setImage3(arrayList.get(2));
+		
+		product_temp.setSmallImage1(arrayListSmallFile.get(0));
+		product_temp.setSmallImage2(arrayListSmallFile.get(1));
+		product_temp.setSmallImage3(arrayListSmallFile.get(2));
 		}
 		
 		productRepo.save(product_temp);
@@ -228,4 +277,69 @@ public class FeaturedProductController {
                 .body(resource);
     }
 	
+	@CrossOrigin
+	@PostMapping("/order")
+	public String takeOrder(@RequestPart("mailbody") MailBody mailBody) {
+		mailBody.setDate(new Date());
+		mailBodyRepo.save(mailBody);
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setTo("mohammed09@student.sust.edu");
+		mailMessage.setSubject("Order on product: "+mailBody.getProductName());
+		mailMessage.setFrom("nonlovesme@gmail.com");
+		mailMessage.setText("Ordered from phone number: "+mailBody.getPhoneNo()+"."+"\n" +
+		"Address: "+mailBody.getAddress());
+		emailSenderService.sendEmail(mailMessage);
+		return "success";
+	}
+	
+	
+	  public UploadFileResponse uploadSlide(@RequestParam("file") MultipartFile file) {
+		    
+	        String fileName = fileStorageService.storeSlide(file);
+	       
+	        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+	                .path("/downloadFile/")
+	                .path(fileName)
+	                .toUriString();
+	        
+	         sliderURL.add(fileDownloadUri);
+	        return new UploadFileResponse(fileName, fileDownloadUri,
+	                file.getContentType(), file.getSize());
+	    }
+	
+	@CrossOrigin
+	@PostMapping("/uploadSlider")
+	public List<UploadFileResponse> uploadSlider(@RequestPart("files")MultipartFile[] files){
+		List<UploadFileResponse> list = Arrays.asList(files)
+                .stream()
+                .map(file -> uploadSlide(file))
+                .collect(Collectors.toList());
+		for(int i=0;i<sliderURL.size();i++) {
+			HomeSlider tempSlider = new HomeSlider();
+			tempSlider.setImage(sliderURL.get(i));
+			homeSliderRepo.save(tempSlider);
+		}
+		return list;
+	}
+	
+	@CrossOrigin
+	@GetMapping("/allSlider")
+	public List<HomeSlider> getAllSlider(){
+	 return homeSliderService.getAll();	
+	}
+	
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.DELETE , value = "/deleteSlide/{id}")
+	public String deleteOneSlide(@PathVariable String id){
+
+		String result = homeSliderService.deleteOne(id);
+		return result;
+	}
+	
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.GET , value = "/allproduct_type/{type}")
+	public List<Product_temp> getProductOfType(@PathVariable String type){
+
+		return productService.getProductOfType(type);
+	}
 }

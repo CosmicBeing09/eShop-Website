@@ -32,13 +32,18 @@ private String warrenty;
 private String image1;
 private String image2;
 private String image3;
-public Product_temp(String id, String userId, String type, String name, String category, String details, String price, String discountPrice,
-		String brand, String model, String height, String width, String weight, String warrenty, String image1,
-		String image2, String image3) {
+private String smallImage1;
+private String smallImage2;
+private String smallImage3;
+
+
+public Product_temp(String id, String userId, String type, String name, String category, String details, String price,
+		String discountPrice, String brand, String model, String height, String width, String weight, String warrenty,
+		String image1, String image2, String image3, String smallImage1, String smallImage2, String smallImage3) {
 	super();
 	this.id = id;
-	this.type= type;
 	this.userId = userId;
+	this.type = type;
 	this.name = name;
 	this.category = category;
 	this.details = details;
@@ -53,6 +58,9 @@ public Product_temp(String id, String userId, String type, String name, String c
 	this.image1 = image1;
 	this.image2 = image2;
 	this.image3 = image3;
+	this.smallImage1 = smallImage1;
+	this.smallImage2 = smallImage2;
+	this.smallImage3 = smallImage3;
 }
 public Product_temp() {
 	super();
@@ -158,6 +166,24 @@ public String getType() {
 }
 public void setType(String type) {
 	this.type = type;
+}
+public String getSmallImage1() {
+	return smallImage1;
+}
+public void setSmallImage1(String smallImage1) {
+	this.smallImage1 = smallImage1;
+}
+public String getSmallImage2() {
+	return smallImage2;
+}
+public void setSmallImage2(String smallImage2) {
+	this.smallImage2 = smallImage2;
+}
+public String getSmallImage3() {
+	return smallImage3;
+}
+public void setSmallImage3(String smallImage3) {
+	this.smallImage3 = smallImage3;
 }
 
 }
