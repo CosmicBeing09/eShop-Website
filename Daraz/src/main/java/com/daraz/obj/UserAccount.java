@@ -15,18 +15,18 @@ public class UserAccount {
 	@Column(columnDefinition = "serial")
 	private int id;
 	
-	private String username,password;
+	private String name,phone,shopname,password;
 	
 	
-	public UserAccount(String username, String password) {
-		this.username = username;
+	public UserAccount(String phone, String password) {
+		this.phone = phone;
 		this.password = password;
 	}
 	
 	
-	public UserAccount(int id, String username, String password) {
+	public UserAccount(int id, String phone, String password) {
 		this.id = id;
-		this.username = username;
+		this.phone = phone;
 		this.password = password;
 	}
 
@@ -36,18 +36,61 @@ public class UserAccount {
 	}
 
 
+	public UserAccount(int id, String name, String phone, String shopname, String password) {
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.shopname = shopname;
+		this.password = password;
+	}
+
+
+	public UserAccount(String name, String phone, String shopname, String password) {
+		this.name = name;
+		this.phone = phone;
+		this.shopname = shopname;
+		this.password = password;
+	}
+
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUsername() {
-		return username;
+	
+	public String getName() {
+		return name;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+
+	public String getShopname() {
+		return shopname;
+	}
+
+
+	public void setShopname(String shopname) {
+		this.shopname = shopname;
+	}
+
+
 	public String getPassword() {
 		return password;
 	}

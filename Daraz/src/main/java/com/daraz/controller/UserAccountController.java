@@ -30,8 +30,8 @@ public class UserAccountController {
 	@CrossOrigin
 	@PostMapping("/reg")
 	public UserAccount reg(@RequestBody UserAccount user) {
-		userAccountRepo.save(user);
-		return user;
+		UserAccount user1 = userService.registration(user);
+		return user1;
 	}
 	
 	
