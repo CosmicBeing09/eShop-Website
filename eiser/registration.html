@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <link rel="icon" href="img/favicon.png" type="image/png" />
-    <title>PRODA5.com</title>
+    <title>Eiser ecommerce</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="vendors/linericon/style.css" />
@@ -192,6 +192,80 @@
     </section>
     <!--================End Home Banner Area =================-->
 
+
+
+
+    <!--==========================================  SCRIPT TO REGISTER  START  ============================-->
+
+    <script type="text/javascript">
+        function register() {
+            const name = document.getElementById("register_name").value;
+            const shopName = document.getElementById("register_shopName").value;
+            const phoneNumber = document.getElementById("register_phone").value;
+            const password = document.getElementById("register_password").value;
+            const rePassword = document.getElementById("register_rePassword").value;
+
+
+            if (name == "") {
+                alert('Please Fill Name Field')
+                document.getElementById("register_name").focus();
+            }
+
+            else if (shopName == "") {
+                alert('Please Fill Shop Name Field')
+                document.getElementById("register_shopName").focus();
+            }
+            else if (phoneNumber == "") {
+                alert('Please Fill Phone Number Field')
+                document.getElementById("register_phone").focus();
+            }
+            else if (password == "") {
+                alert('Please Fill Password Field')
+                document.getElementById("register_password").focus();
+            }
+            else if (rePassword == "") {
+                alert('Please Fill Repeat Password Field')
+                document.getElementById("register_rePassword").focus();
+            }
+            else if (password != rePassword) {
+                alert('Password and Repeat Password Not matched')
+                document.getElementById("register_rePassword").focus();
+            }
+            else {
+                  var myurl = "http://localhost:8181/reg"
+                  var xhr = new XMLHttpRequest();
+
+                  var data;
+
+                  xhr.open("POST", myurl, false);
+                  xhr.setRequestHeader("Content-Type", "application/json");
+                  data = JSON.stringify({ "name": name, "password": password, "phone": phoneNumber, "shopname": shopName});
+                  var response;
+                  xhr.onload = function () {
+                    if (this.status == 200) {
+                      // Here we go on the new page
+                      var jsonResponse = JSON.parse(this.response);
+                      if (jsonResponse.name != "NULL") {
+                        window.localStorage.setItem('user', JSON.stringify(jsonResponse));
+                        window.location.replace("http://localhost/eiser/test.html");
+                      }
+                    
+
+                    }
+                  };
+
+
+                  xhr.send(data);
+
+
+            }
+        }
+    </script>
+
+
+    <!--==========================================  SCRIPT TO REGISTER  END ============================-->
+
+
     <!-- ==========Form area========== -->
     <section class="blog_area single-post-area section_gap">
         <div class="container">
@@ -203,8 +277,8 @@
                             <input class="form-control" id="register_name" placeholder="Enter Your Name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Retailer Name</label>
-                            <input class="form-control" id="register_retailerName" placeholder="Enter Shop Name">
+                            <label for="exampleInputPassword1">Shop Name</label>
+                            <input class="form-control" id="register_shopName" placeholder="Enter Shop Name">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Phone Number</label>
@@ -212,14 +286,15 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input class="form-control" id="register_password" placeholder="Enter A New Password">
+                            <input type="password" class="form-control" id="register_password" placeholder="Enter A New Password">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Re-write Password</label>
-                            <input class="form-control" id="register_rePassword" placeholder="Re-write the Password">
+                            <input type="password" class="form-control" id="register_rePassword" placeholder="Re-write the Password">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" id="button_register">Register</button>
+                            <button type="button" class="btn btn-primary" id="button_register"
+                                onclick="register()">Register</button>
                         </div>
                     </form>
                 </div>

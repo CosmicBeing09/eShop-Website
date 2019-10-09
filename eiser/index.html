@@ -1,171 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-  * {
-    margin: 0px;
-    padding: 0px;
-    font-family: Helvetica, Arial, sans-serif;
-  }
-
-  /* Full-width input fields */
-  input[type=text],
-  input[type=password] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 8px 26px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-
-  /* Set a style for all buttons */
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 26px;
-    border: none;
-    cursor: pointer;
-    width: 90%;
-    font-size: 20px;
-  }
-
-  button:hover {
-    opacity: 0.8;
-  }
-
-  /* Center the image and position the close button */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-  }
-
-  .avatar {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-  }
-
-  /* The Modal (background) */
-
-
-  /* Modal Content Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 4% auto 15% auto;
-    border: 1px solid #888;
-    width: 40%;
-    padding-bottom: 30px;
-  }
-
-  /* The Close Button (x) */
-  .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
-
-  /* Add Zoom Animation */
-  .animate {
-    animation: zoom 0.6s
-  }
-
-  @keyframes zoom {
-    from {
-      transform: scale(0)
-    }
-
-    to {
-      transform: scale(1)
-    }
-  }
-</style>
-</style>
-
-
-
 <!--   Styles For Pop Up  -->
-    <style>
-        body{
-        height: 100vh;
-        text-align: center;
-      }
-        /*Trigger Button*/
-      .login-trigger {
-        font-weight: bold;
-        color: #fff;
-        background: linear-gradient(to bottom right, #FF4500, #FF4500);
-        padding: 15px 30px;
-        border-radius: 30px;
-        position: relative; 
-        top: 50%;
-      }
-      
-      /*Modal*/
-      h4 {
-        font-weight: bold;
-        color: #fff;
-      }
-      .close {
-        color: #fff;
-        transform: scale(1.2)
-      }
-      .modal-content {
-        font-weight: bold;
-        background: linear-gradient(to bottom right,#FF4500,#FF4500);
-      }
-      .form-control {
-        margin: 1em 0;
-      }
-      .form-control:hover, .form-control:focus {
-        box-shadow: none;  
-        border-color: #fff;
-      }
-      .username, .password {
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-        border-bottom: 2px solid #eee;
-        padding-left: 0;
-        font-weight: normal;
-        background: transparent;  
-      }
-      .form-control::-webkit-input-placeholder {
-        color: #eee;  
-      }
-      .form-control:focus::-webkit-input-placeholder {
-        font-weight: bold;
-        color: #fff;
-      }
-      .login {
-        padding: 6px 20px;
-        border-radius: 20px;
-        background: rgb(54, 16, 2);
-        border: 2px solid #FF4500;
-        color: #FF4500;
-        font-weight: bold;
-        transition: all .5s;
-        margin-top: 1em;
-      }
-      .login:hover {
-        background: rgb(54, 16, 2);
-        color: #fff;
-      }
-      </style>
+<style>
+  body {
+    height: 100vh;
+    text-align: center;
+  }
+
+  /*Trigger Button*/
+  .login-trigger {
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to bottom right, #FF4500, #FF4500);
+    padding: 15px 30px;
+    border-radius: 30px;
+    position: relative;
+    top: 50%;
+  }
+
+  /*Modal*/
+  h4 {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .close {
+    color: #fff;
+    transform: scale(1.2)
+  }
+
+  .modal-content {
+    font-weight: bold;
+    background: linear-gradient(to bottom right, #FF4500, #FF4500);
+  }
+
+  .form-control {
+    margin: 1em 0;
+  }
+
+  .form-control:hover,
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #fff;
+  }
+
+  .username,
+  .password {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 2px solid #eee;
+    padding-left: 0;
+    font-weight: normal;
+    background: transparent;
+  }
+
+  .form-control::-webkit-input-placeholder {
+    color: #eee;
+  }
+
+  .form-control:focus::-webkit-input-placeholder {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .login {
+    padding: 6px 20px;
+    border-radius: 20px;
+    background: rgb(54, 16, 2);
+    border: 2px solid #FF4500;
+    color: #FF4500;
+    font-weight: bold;
+    transition: all .5s;
+    margin-top: 1em;
+  }
+
+  .login:hover {
+    background: rgb(54, 16, 2);
+    color: #fff;
+  }
+
+  .dearrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+</style>
 
 
-<!--   Styles For Popup  ENDS HERE-->   
+
+
 
 
 
@@ -288,41 +217,61 @@
                 </ul>
               </div>
 
-              <div class="col-lg-5 pr-0">
+               <!-- Dropdown -->
+               <div class="col-lg-5 pr-0">
                 <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-search" aria-hidden="true"></i>
+
+                  <li class="nav-item dropdown" id = "listnav">
+                    <a class="nav-link dropdown-toggle" href="#"  id="navbardrop" data-toggle="dropdown">
+                      Login/Register
                     </a>
-                  </li>
+                    <script>
+                      var loginReg = document.getElementById('navbardrop');
+                      if (window.localStorage.getItem('user') == null) {
+                        loginReg.setAttribute('data-target','#login');
+                        loginReg.setAttribute('data-toggle','modal');
+                      }
+                      else {
+                        
+                        const arw = document.createElement('i');
+                        arw.setAttribute('class', 'dearrow');
+                        document.getElementById('navbardrop').appendChild(arw);
+                        const listnav = document.getElementById('listnav');
+                        const divnav = document.createElement('div');
+                        divnav.setAttribute('class','dropdown-menu');
+                        listnav.appendChild(divnav);
+                        const item1 = document.createElement('a');
+                        item1.setAttribute('class','dropdown-item')
+                        item1.href = '#'
+                        item1.textContent = 'Vung Chung'
+                        divnav.appendChild(item1)
 
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </li>
+                        const item2 = document.createElement('a');
+                        item2.setAttribute('class','dropdown-item')
+                        item2.href = '#'
+                        item2.textContent = 'All Product'
+                        divnav.appendChild(item2)
 
+                        const item3 = document.createElement('a');
+                        item3.setAttribute('class','dropdown-item')
+                        item3.href = '#'
+                        item3.textContent = 'Logout'
+                        divnav.appendChild(item3)
 
-                  <li 
-                    class="nav-item">
-                    <a class="icons" href="#" data-target="#login" data-toggle="modal">
+                        item3.onclick(
+                          window.localStorage.clear() )
 
-                      <i class="ti-user" ></i>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-heart" aria-hidden="true"></i>
-                    </a>
+                        
+                      }
+                    </script>
                   </li>
                 </ul>
               </div>
             </div>
-          </div>
         </nav>
       </div>
     </div>
+
   </header>
 
 
@@ -333,60 +282,63 @@
 
 <script type="text/javascript">
   function submitform() {
-    const username = document.getElementById("login_username").value;
-        const password = document.getElementById("login_password").value;
-        
-        var myurl = "http://localhost:8181/login"
-      //   setCookie("username", username, 365);
-        var xhr = new XMLHttpRequest();
-  
-        var data;
+    const phone = document.getElementById("login_username").value;
+    const password = document.getElementById("login_password").value;
 
-        xhr.open("POST", myurl, false);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        data = JSON.stringify({"username": username, "password": password});
-        var response;
-        xhr.onload = function() {
-          if ( this.status == 200) {
-            // Here we go on the new page
-            var jsonResponse = JSON.parse(this.response);
-            if(jsonResponse.username != "NULL"){
-              window.localStorage.setItem('user', JSON.stringify(jsonResponse));
-              window.location.replace("http://localhost/eiser/test.html");
-            }
-            else{
-                alert("Wrong Username or Password");
-            }
-            
-          }
-        };
-        
-  
-        xhr.send(data);
+    var myurl = "http://localhost:8181/login"
+    var xhr = new XMLHttpRequest();
 
-    
+    var data;
+
+    xhr.open("POST", myurl, false);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    data = JSON.stringify({ "phone": phone, "password": password });
+    var response;
+    xhr.onload = function () {
+      if (this.status == 200) {
+        // Here we go on the new page
+        var jsonResponse = JSON.parse(this.response);
+        if (jsonResponse.phone != "NULL") {
+          window.localStorage.setItem('user', JSON.stringify(jsonResponse));
+          window.location.replace("http://localhost/eiser/test.html");
+        }
+        else {
+          alert("Wrong Phone Number or Password");
+        }
+
+      }
+    };
+
+
+    xhr.send(data);
+
+
   }
 </script>
 
 <div id="login" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    
+
     <div class="modal-content">
       <div class="modal-body">
         <button data-dismiss="modal" class="close">&times;</button>
         <h4>Login</h4>
         <form>
-          <input type="text" id="login_username" class="username form-control" placeholder="Username"/>
-          <input type="password" id="login_password" class="password form-control" placeholder="password"/>
+          <input type="text" id="login_username" class="username form-control" placeholder="Phone Number" />
+          <input type="password" id="login_password" class="password form-control" placeholder="Password" />
+          <div>
           <button class="btn login" type="button" value="Login" onclick="submitform()">Login</button>
+          <button class="btn login" type="button" onclick="location.href = 'http://localhost/eiser/registration.html';" >Registration</button>
+        </div>
         </form>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
 
 
 <!--================ POP UP LOGIN END =================-->
+
 
 
 
