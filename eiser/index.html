@@ -300,7 +300,7 @@
         var jsonResponse = JSON.parse(this.response);
         if (jsonResponse.phone != "NULL") {
           window.localStorage.setItem('user', JSON.stringify(jsonResponse));
-          window.location.replace("http://localhost/eiser/test.html");
+          window.location.replace("shop_category.html");
         }
         else {
           alert("Wrong Phone Number or Password");

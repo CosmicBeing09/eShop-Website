@@ -7,14 +7,17 @@ function getUrlVars() {
 }
 var category = getUrlVars()["category"];
 var request = new XMLHttpRequest()
+const user =  JSON.parse(window.localStorage.getItem('user'))
+console.log(user.id)
 
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'http://localhost:8181/allproduct', true)
+request.open('GET', 'http://localhost:8181/all_user_product/'+user.id, true)
 
 request.onload = function () {
   // Begin accessing JSON data here
 
   var data = JSON.parse(this.response)
+  console.log(data)
   data.forEach(movie => {
     if(category===undefined){
     const app = document.getElementById('category-product')
@@ -43,7 +46,7 @@ request.onload = function () {
     var scrt_var = 10
     var strLink = "edit.html?id="+ movie.id;
     aa.setAttribute("href",strLink)
-    console.log(strLink)
+    //console.log(strLink)
     //document.getElementById("link2").setAttribute("href",strLink);
 
     const icon = document.createElement('div')

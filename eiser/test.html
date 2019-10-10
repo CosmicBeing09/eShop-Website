@@ -2,8 +2,10 @@
     <h1 id = "head1"> </h1>
     <script>
         // window.localStorage.clear();
+        
         if(window.localStorage.getItem('user')!=null){
-            document.getElementById('head1').innerHTML = window.localStorage.getItem('user')
+            const user = window.localStorage.getItem('user')
+            document.getElementById('head1').innerHTML = user.id
         }
         else{
             document.getElementById('head1').innerHTML = 'HI'
