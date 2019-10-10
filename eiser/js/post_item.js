@@ -3,7 +3,8 @@ var link = 'http://localhost:8181/uploadProduct'
 var postItemButton = document.querySelector('#upload_product_button');
 var postItemPhotos = document.querySelector('#multipleFileUploadInput');
 
-
+var user =  JSON.parse(window.localStorage.getItem('user'))
+console.log(user.id)
 function uploadMultipleFiles(files) {
     var formData = new FormData();
     for(var index = 0; index < files.length; index++) {
@@ -36,7 +37,7 @@ function uploadMultipleFiles(files) {
         "weight" : weight,
         "warrenty" : warrenty,
         "type": "Regular",
-        "userId" : ""
+        "userId" : user.id
 
     })], {
             type: "application/json",

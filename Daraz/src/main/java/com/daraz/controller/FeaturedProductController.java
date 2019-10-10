@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.sound.midi.Soundbank;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -91,7 +93,20 @@ public class FeaturedProductController {
 		return productService.getall();
 	}
 	
-	
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.GET , value = "/all_user_product/{userId}")
+	public List<Product_temp> getAllProductByUserId(@PathVariable String userId){
+		
+		List<Product_temp> all = productService.getall();
+		List<Product_temp> temp = new ArrayList<Product_temp>();
+		for(int i=0;i<all.size();i++) {
+			if(all.get(i).getUserId()!=null)
+			if(all.get(i).getUserId().equals(userId))
+				temp.add(all.get(i));
+			
+		}
+		return temp;
+	}
 	
 	@RequestMapping("/hi")
 	public String s(){
@@ -103,14 +118,7 @@ public class FeaturedProductController {
 	@RequestMapping(method = RequestMethod.GET , value = "/allproduct/{id}")
 	public Product_temp getOneProduct(@PathVariable String id){
 
-//		List<Product_temp> all = productService.getall();
-//		List<Product_temp> temp = new ArrayList<Product_temp>();
-//		for(int i=0;i<all.size();i++) {
-//			if(all.get(i).getId().equals(id)) {
-//				temp.add(all.get(i));
-//				break;
-//			}
-//		}
+
 		List<Product_temp> all = productService.getall();
 		Product_temp temp = new Product_temp();
 		for(int i=0;i<all.size();i++) {
