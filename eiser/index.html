@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--   Styles For Pop Up  -->
+
+<script>
+  const backendurl = 'https://proda5-back.herokuapp.com/';
+  const frontendurl = 'https://proda5.herokuapp.com/';
+</script>
 <style>
   body {
     height: 100vh;
@@ -254,7 +259,7 @@
 
                         const item3 = document.createElement('a');
                         item3.setAttribute('class','dropdown-item')
-                        item3.href = '#'
+                        item3.href = frontendurl;
                         item3.textContent = 'Logout'
                         divnav.appendChild(item3)
 
@@ -285,7 +290,7 @@
     const phone = document.getElementById("login_username").value;
     const password = document.getElementById("login_password").value;
 
-    var myurl = "http://localhost:8181/login"
+    var myurl = backendurl + "login";
     var xhr = new XMLHttpRequest();
 
     var data;
@@ -300,7 +305,7 @@
         var jsonResponse = JSON.parse(this.response);
         if (jsonResponse.phone != "NULL") {
           window.localStorage.setItem('user', JSON.stringify(jsonResponse));
-          window.location.replace("shop_category.html");
+          window.location.replace(frontendurl +"shop_category.html");
         }
         else {
           alert("Wrong Phone Number or Password");
@@ -328,7 +333,7 @@
           <input type="password" id="login_password" class="password form-control" placeholder="Password" />
           <div>
           <button class="btn login" type="button" value="Login" onclick="submitform()">Login</button>
-          <button class="btn login" type="button" onclick="location.href = 'http://localhost/eiser/registration.html';" >Registration</button>
+          <button class="btn login" type="button" onclick="location.href = frontendurl+'registration.html';" >Registration</button>
         </div>
         </form>
       </div>
