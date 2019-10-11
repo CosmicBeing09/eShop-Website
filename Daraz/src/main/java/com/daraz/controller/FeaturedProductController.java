@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.daraz.service.EmailSenderService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.core.io.Resource;
@@ -30,12 +31,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.*;
 import com.daraz.obj.UploadFileResponse;
 import com.daraz.repo.HomeSliderRepo;
 import com.daraz.repo.MailBodyRepo;
 import com.daraz.repo.ProductRepo;
+import com.cloudinary.utils.ObjectUtils;
+import com.daraz.component.CloudinaryConfig;
 import com.daraz.obj.HomeSlider;
 import com.daraz.obj.MailBody;
 import com.daraz.obj.Product;
@@ -183,6 +187,33 @@ public class FeaturedProductController {
                 file.getContentType(), file.getSize());
     }
 	
+	
+	///////////////////// =============   Cloudinary Image Upload Testing   ==================   ////////////////////////
+	@Autowired
+    CloudinaryConfig cloudc;
+	
+	@CrossOrigin
+	@PostMapping("/cloudc")
+    public String singleImageUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes){
+        Map uploadResult = null;
+		if (file.isEmpty()){
+            //model.addAttribute("message","Please select a file to upload");
+            return "NO FILE";
+        }
+        try {
+             uploadResult =  cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+//            model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
+//            model.addAttribute("imageurl", uploadResult.get("url"));
+        } catch (IOException e){
+            e.printStackTrace();
+//            model.addAttribute("message", "Sorry I can't upload that!");
+            
+        }
+        return (String) uploadResult.get("url");
+    }
+	
+	
+	////////////////////////////////////// ================ End ================= ////////////////////////////////
 	@CrossOrigin
 	@PostMapping("/uploadProduct")
     public List<UploadFileResponse> uploadMultipleFiles(@RequestPart("files") MultipartFile[] files,@RequestPart("product")Product_temp product_temp) {
