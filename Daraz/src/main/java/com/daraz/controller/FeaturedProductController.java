@@ -167,23 +167,23 @@ public class FeaturedProductController {
         String fileName = fileStorageService.storeFile(file);
         String smallFileName = fileStorageService.storeSmallFile(file);
        
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
-                .path(fileName)
-                .toUriString();
+//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                .path("/downloadFile/")
+//                .path(fileName)
+//                .toUriString();
+//        
+//        arrayList.add(fileDownloadUri);
+        arrayList.add(fileName);
         
-        arrayList.add(fileDownloadUri);
+//        String smallFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                .path("/downloadFile/")
+//                .path(smallFileName)
+//                .toUriString();
+        
+         arrayListSmallFile.add(smallFileName);
         
         
-        String smallFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
-                .path(smallFileName)
-                .toUriString();
-        
-         arrayListSmallFile.add(smallFileDownloadUri);
-        
-        
-        return new UploadFileResponse(fileName, fileDownloadUri,
+        return new UploadFileResponse(fileName, fileName,
                 file.getContentType(), file.getSize());
     }
 	
@@ -194,7 +194,7 @@ public class FeaturedProductController {
 	
 	@CrossOrigin
 	@PostMapping("/cloudc")
-    public String singleImageUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes){
+    public String singleImageUpload(@RequestParam("file") MultipartFile file){
         Map uploadResult = null;
 		if (file.isEmpty()){
             //model.addAttribute("message","Please select a file to upload");

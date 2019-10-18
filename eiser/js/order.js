@@ -1,7 +1,9 @@
 'use strict';
-var link = 'http://localhost:8181/order'
+const backendurl = 'https://proda5-back.herokuapp.com/';
+  const frontendurl = 'https://proda5.herokuapp.com/';
+var link = backendurl+'order'
 var buy = document.querySelector('#buy_button');
-
+console.log('order 1');
 // var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
 // var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
 
@@ -22,6 +24,7 @@ function order() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST",link,true);
     xhr.onreadystatechange = function() {
+      console.log('order 2');
         if (this.readyState == 4 && this.status == 200) {
           alert("Succesfully ordered your product")
         }
@@ -29,15 +32,6 @@ function order() {
     xhr.send(formData);
 }
 buy.addEventListener('click', function(event){
-    // const root = document.getElementById('popup_holder')
-    // const div = document.createElement('div')
-    // div.setAttribute('class','spinner-border')
-    // div.setAttribute('role','status')
-    // const span = document.createElement('span')
-    // span.setAttribute('class','sr-only')
-    // span.textContent = 'Loading ....'
-    // div.appendChild(span)
-    // root.appendChild(div)
     order();
     event.preventDefault();
 }, true);

@@ -237,7 +237,9 @@
                         loginReg.setAttribute('data-toggle','modal');
                       }
                       else {
-                        
+                        var data =  window.localStorage.getItem('user');
+                        var obj = JSON.parse(data);
+                        document.getElementById('navbardrop').textContent = obj.name;
                         const arw = document.createElement('i');
                         arw.setAttribute('class', 'dearrow');
                         document.getElementById('navbardrop').appendChild(arw);
@@ -245,16 +247,16 @@
                         const divnav = document.createElement('div');
                         divnav.setAttribute('class','dropdown-menu');
                         listnav.appendChild(divnav);
-                        const item1 = document.createElement('a');
-                        item1.setAttribute('class','dropdown-item')
-                        item1.href = '#'
-                        item1.textContent = 'Vung Chung'
-                        divnav.appendChild(item1)
+                        // const item1 = document.createElement('a');
+                        // item1.setAttribute('class','dropdown-item')
+                        // item1.href = '#'
+                        // item1.textContent = 'Vung Chung'
+                        // divnav.appendChild(item1)
 
                         const item2 = document.createElement('a');
                         item2.setAttribute('class','dropdown-item')
-                        item2.href = '#'
-                        item2.textContent = 'All Product'
+                        item2.href = "shop_category.html"
+                        item2.textContent = 'My Products'
                         divnav.appendChild(item2)
 
                         const item3 = document.createElement('a');
@@ -304,8 +306,9 @@
         // Here we go on the new page
         var jsonResponse = JSON.parse(this.response);
         if (jsonResponse.phone != "NULL") {
-          window.localStorage.setItem('user', JSON.stringify(jsonResponse));
-          window.location.replace(frontendurl +"shop_category.html");
+          window.localStorage.setItem('user',JSON.stringify(jsonResponse));
+           window.location.replace(frontendurl +"shop_category.html");
+          // alert('AAA' + JSON.stringify(jsonResponse))
         }
         else {
           alert("Wrong Phone Number or Password");

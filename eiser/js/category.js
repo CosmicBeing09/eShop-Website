@@ -1,4 +1,7 @@
+const backendurl = 'https://proda5-back.herokuapp.com/';
+const frontendurl = 'https://proda5.herokuapp.com/';
 function getUrlVars() {
+  
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
     vars[key] = value;
@@ -11,7 +14,7 @@ var category = getUrlVars()["category"];
 var request = new XMLHttpRequest()
 
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'http://localhost:8181/allproduct', true)
+request.open('GET', backendurl+'allproduct', true)
 
 var data;
 

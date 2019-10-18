@@ -1,5 +1,7 @@
 'use strict';
-var link = 'http://localhost:8181/reg'
+const backendurl = 'https://proda5-back.herokuapp.com/';
+  const frontendurl = 'https://proda5.herokuapp.com/';
+var link = backendurl+ 'reg'
 var multipleUploadForm = document.querySelector('#button_login');
 
 

@@ -6,7 +6,9 @@ function getUrlVars() {
     });
     return vars;
 }
-var link1 = 'http://localhost:8181/uploadProduct'
+const backendurl = 'https://proda5-back.herokuapp.com/';
+const frontendurl = 'https://proda5.herokuapp.com/';
+var link1 = backendurl + 'uploadProduct';
 var update_button = document.querySelector('#update_product_button');
 var multipleFileUploadInput = document.querySelector('#update_multipleFileUploadInput');
 // var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
@@ -15,8 +17,8 @@ var multipleFileUploadInput = document.querySelector('#update_multipleFileUpload
 var id = getUrlVars()["id"];
 var request = new XMLHttpRequest()
 //console.log(id)
-var link = 'http://localhost:8181/allproduct/' + id
-var link2 = 'http://localhost:8181/updateProduct/'
+var link = backendurl + 'allproduct/' + id
+var link2 = backendurl +'updateProduct/'
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', link, true)
 

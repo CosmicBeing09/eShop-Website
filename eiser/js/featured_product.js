@@ -1,8 +1,10 @@
 
 var request = new XMLHttpRequest()
+const backendurl = 'https://proda5-back.herokuapp.com/';
+  const frontendurl = 'https://proda5.herokuapp.com/';
 
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'http://localhost:8181/allproduct_type/Featured', true)
+request.open('GET', backendurl+ 'allproduct_type/Featured', true)
 
 request.onload = function () {
   // Begin accessing JSON data here

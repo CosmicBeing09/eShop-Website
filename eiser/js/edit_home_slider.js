@@ -19,11 +19,13 @@
 //     };
 //     xhr.send();
 //   }
+const backendurl = 'https://proda5-back.herokuapp.com/';
+  const frontendurl = 'https://proda5.herokuapp.com/';
 
 var request = new XMLHttpRequest()
 
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'http://localhost:8181/allSlider', true)
+request.open('GET', backendurl+ 'allSlider', true)
 
 var data;
 
@@ -82,7 +84,7 @@ request.onload = function () {
     btn.addEventListener('click', function (event) {
      // console.log(id)
       var xhr = new XMLHttpRequest();
-      xhr.open("DELETE", 'http://localhost:8181/deleteSlide/' + id, true);
+      xhr.open("DELETE", backendurl+ 'deleteSlide/' + id, true);
       xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           // Here we go on the new page

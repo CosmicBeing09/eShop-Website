@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+        <script>
+                const backendurl = 'https://proda5-back.herokuapp.com/';
+                const frontendurl = 'https://proda5.herokuapp.com/';
+              </script>
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -198,7 +203,7 @@
           const username = document.getElementById("login_phone").value;
           const password = document.getElementById("login_password").value;
           
-          var myurl = "http://localhost:8181/login"
+          var myurl = backendurl+ "login"
         //   setCookie("username", username, 365);
           var xhr = new XMLHttpRequest();
     
@@ -214,7 +219,7 @@
               var jsonResponse = JSON.parse(this.response);
               if(jsonResponse.username != "NULL"){
                 window.localStorage.setItem('user', JSON.stringify(jsonResponse));
-                window.location.replace("http://localhost/eiser/test.html");
+                window.location.replace(frontendurl+"test.html");
               }
               else{
                   alert("Incorrect Phone Number or Password");

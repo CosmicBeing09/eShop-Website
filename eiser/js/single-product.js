@@ -5,11 +5,12 @@ function getUrlVars() {
     });
     return vars;
 }
-
+const backendurl = 'https://proda5-back.herokuapp.com/';
+  const frontendurl = 'https://proda5.herokuapp.com/';
 var id = getUrlVars()["id"];
 //console.log(id)
 var request = new XMLHttpRequest()
-var link = 'http://localhost:8181/allproduct/' + id
+var link = backendurl+'allproduct/' + id
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', link, true)
 

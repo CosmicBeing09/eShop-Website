@@ -1,4 +1,7 @@
 'use strict';
+const backendurl = 'https://proda5-back.herokuapp.com/';
+const frontendurl = 'https://proda5.herokuapp.com/';
+
 var edit_button = document.querySelector('#edit_product_button');
 function getUrlVars() {
     var vars = {};
@@ -7,32 +10,33 @@ function getUrlVars() {
     });
     return vars;
 }
+
 var id = getUrlVars()["id"];
-edit_button.addEventListener('click', function(event){
-  document.location.href = "update.html?id="+ id;
-  //console.log(id)
+
+  edit_button.addEventListener('click', function(event){
+  document.location.href = frontendurl+ "update.html?id="+ id;
 }, true);
 
 var delete_button = document.querySelector('#delete_product_button')
 delete_button.addEventListener('click', function(event){
+  console.log("delete clicked")
   var request1 = new XMLHttpRequest()
-  var url='http://localhost:8181/delete/' + id
+  var url=backendurl+ 'delete/' + id
   request1.open('DELETE',url,true)
   request1.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       // Here we go on the new page
       alert("Deleted")
-      window.location = "shop_category.html";
+      window.location = frontendurl+"shop_category.html";
       
     }
   };
-  //console.log(url)
-  request1.send()
+  request1.send();
 }, true);
 
 
 var request = new XMLHttpRequest()
-var link = 'http://localhost:8181/allproduct/' + id
+var link = backendurl + 'allproduct/' + id
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', link, true)
 
@@ -55,6 +59,13 @@ request.onload = function () {
         image1.src = data.image1
         image2.src = data.image2
         image3.src = data.image3
+
+        const smallimage1 = document.getElementById('smallimage1')
+        const smallimage2 = document.getElementById('smallimage2')
+        const smallimage3 = document.getElementById('smallimage3')
+        smallimage1.src = data.smallImage1
+        smallimage2.src = data.smallImage2
+        smallimage3.src = data.smallImage3
         
         const product_name = document.getElementById('product-name')
         const product_price = document.getElementById('product-price')

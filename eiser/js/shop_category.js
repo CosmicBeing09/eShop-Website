@@ -1,3 +1,4 @@
+
 function getUrlVars() {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -5,13 +6,15 @@ function getUrlVars() {
   });
   return vars;
 }
+const backendurl = 'https://proda5-back.herokuapp.com/';
+  const frontendurl = 'https://proda5.herokuapp.com/';
 var category = getUrlVars()["category"];
 var request = new XMLHttpRequest()
 const user =  JSON.parse(window.localStorage.getItem('user'))
 console.log(user.id)
 
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'http://localhost:8181/all_user_product/'+user.id, true)
+request.open('GET', backendurl +'all_user_product/'+user.id, true)
 
 request.onload = function () {
   // Begin accessing JSON data here
@@ -128,7 +131,7 @@ request.onload = function () {
       const aa = document.createElement('a')
       //aa.href = "#"
       var scrt_var = 10
-      var strLink = "edit.html?id="+ movie.id;
+      var strLink = frontendurl+"edit.html?id="+ movie.id;
       aa.setAttribute("href",strLink)
       console.log(strLink)
       //document.getElementById("link2").setAttribute("href",strLink);

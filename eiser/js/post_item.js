@@ -1,5 +1,7 @@
 'use strict';
-var link = 'http://localhost:8181/uploadProduct'
+const backendurl = 'https://proda5-back.herokuapp.com/';
+  const frontendurl = 'https://proda5.herokuapp.com/';
+var link = backendurl+'/uploadProduct'
 var postItemButton = document.querySelector('#upload_product_button');
 var postItemPhotos = document.querySelector('#multipleFileUploadInput');
 
