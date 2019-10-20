@@ -264,9 +264,8 @@
                         item3.href = frontendurl;
                         item3.textContent = 'Logout'
                         divnav.appendChild(item3)
-
-                        item3.onclick(
-                          window.localStorage.clear() )
+                        item3.onclick = function(){window.localStorage.clear();};
+                        
 
                         
                       }

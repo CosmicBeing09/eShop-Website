@@ -32,6 +32,7 @@ function order() {
     xhr.send(formData);
 }
 buy.addEventListener('click', function(event){
-    order();
+    
+  order();
     event.preventDefault();
 }, true);
