@@ -32,29 +32,8 @@
           <div class="row">
             <div class="col-lg-7">
               <div class="float-left">
-                <p>Phone: +01 256 25 235</p>
-                <p>email: info@eiser.com</p>
-              </div>
-            </div>
-            <div class="col-lg-5">
-              <div class="float-right">
-                <ul class="right_side">
-                  <li>
-                    <a href="cart.html">
-                      gift card
-                    </a>
-                  </li>
-                  <li>
-                    <a href="tracking.html">
-                      track order
-                    </a>
-                  </li>
-                  <li>
-                    <a href="contact.html">
-                      Contact Us
-                    </a>
-                  </li>
-                </ul>
+                <p>Phone: +8801852606036</p>
+                <p>email: nayeemahmed24@gmail.com</p>
               </div>
             </div>
           </div>
@@ -67,139 +46,87 @@
             <a class="navbar-brand logo_h" href="index.html">
               <img src="img/logo.png" alt="" />
             </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div
-              class="collapse navbar-collapse offset w-100"
-              id="navbarSupportedContent"
-            >
+            <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
               <div class="row w-100 mr-0">
                 <div class="col-lg-7 pr-0">
                   <ul class="nav navbar-nav center_nav pull-right">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                       <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item submenu dropdown">
-                      <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >Shop</a
-                      >
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false">Shop</a>
                       <ul class="dropdown-menu">
                         <li class="nav-item">
-                          <a class="nav-link" href="category.html"
-                            >Shop Category</a
-                          >
+                          <a class="nav-link" href="category.html">Shop Category</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="single-product.html"
-                            >Product Details</a
-                          >
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="checkout.html"
-                            >Product Checkout</a
-                          >
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="cart.html">Shopping Cart</a>
+                          <a class="nav-link" href="contact.html">Contact</a>
                         </li>
                       </ul>
-                    </li>
-                    <li class="nav-item submenu dropdown">
-                      <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >Blog</a
-                      >
-                      <ul class="dropdown-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="blog.html">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="single-blog.html"
-                            >Blog Details</a
-                          >
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-item submenu dropdown">
-                      <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >Pages</a
-                      >
-                      <ul class="dropdown-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="tracking.html">Tracking</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="elements.html">Elements</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                  </ul>
+                      <li class="nav-item ">
+                        <a class="nav-link" href="about.html">About Us</a>
+                      </li>
                 </div>
-
+  
+                <!-- Dropdown -->
                 <div class="col-lg-5 pr-0">
                   <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-search" aria-hidden="true"></i>
+  
+                    <li class="nav-item dropdown" id="listnav">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Login/Register
                       </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-shopping-cart"></i>
-                      </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-user" aria-hidden="true"></i>
-                      </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-heart" aria-hidden="true"></i>
-                      </a>
+                      <script>
+                        var loginReg = document.getElementById('navbardrop');
+                        if (window.localStorage.getItem('user') == null) {
+                          loginReg.setAttribute('data-target', '#login');
+                          loginReg.setAttribute('data-toggle', 'modal');
+                        }
+                        else {
+                          var data = window.localStorage.getItem('user');
+                          var obj = JSON.parse(data);
+                          document.getElementById('navbardrop').textContent = obj.name;
+                          const arw = document.createElement('i');
+                          arw.setAttribute('class', 'dearrow');
+                          document.getElementById('navbardrop').appendChild(arw);
+                          const listnav = document.getElementById('listnav');
+                          const divnav = document.createElement('div');
+                          divnav.setAttribute('class', 'dropdown-menu');
+                          listnav.appendChild(divnav);
+  
+                          const item2 = document.createElement('a');
+                          item2.setAttribute('class', 'dropdown-item')
+                          item2.href = "shop_category.html"
+                          item2.textContent = 'My Products'
+                          divnav.appendChild(item2)
+  
+                          const item3 = document.createElement('a');
+                          item3.setAttribute('class', 'dropdown-item')
+                          item3.href = frontendurl;
+                          item3.textContent = 'Logout'
+                          divnav.appendChild(item3)
+                          item3.onclick = function () { window.localStorage.clear(); };
+  
+  
+  
+                        }
+                      </script>
                     </li>
                   </ul>
                 </div>
               </div>
-            </div>
           </nav>
         </div>
       </div>
+  
     </header>
     <!--================Header Menu Area =================-->
 
@@ -227,33 +154,7 @@
     <!-- ================ contact section start ================= -->
   <section class="section_gap">
     <div class="container">
-      <div class="d-none d-sm-block mb-5 pb-4">
-        <div id="map" style="height: 480px;"></div>
-        <script>
-          function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
-            var grayStyles = [
-              {
-                featureType: "all",
-                stylers: [
-                  { saturation: -90 },
-                  { lightness: 50 }
-                ]
-              },
-              {elementType: 'labels.text.fill', stylers: [{color: '#A3A3A3'}]}
-            ];
-            var map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: -31.197, lng: 150.744},
-              zoom: 9,
-              styles: grayStyles,
-              scrollwheel:  false
-            });
-          }
-          
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
-        
-      </div>
+ 
 
 
       <div class="row">
@@ -296,21 +197,21 @@
           <div class="media contact-info">
             <span class="contact-info__icon"><i class="ti-home"></i></span>
             <div class="media-body">
-              <h3>Buttonwood, California.</h3>
-              <p>Rosemead, CA 91770</p>
+              <h3>Hathajari,California.</h3>
+              <p>Chittagon</p>
             </div>
           </div>
           <div class="media contact-info">
             <span class="contact-info__icon"><i class="ti-tablet"></i></span>
             <div class="media-body">
-              <h3><a href="tel:454545654">00 (440) 9865 562</a></h3>
-              <p>Mon to Fri 9am to 6pm</p>
+              <h3><a href="tel: +8801628330969">+88 01628330969</a></h3>
+              <p>Open 24/7</p>
             </div>
           </div>
           <div class="media contact-info">
             <span class="contact-info__icon"><i class="ti-email"></i></span>
             <div class="media-body">
-              <h3><a href="mailto:support@colorlib.com">support@colorlib.com</a></h3>
+              <h3><a href="proda5.order@gmail.com">proda5.order@gmail.com</a></h3>
               <p>Send us your query anytime!</p>
             </div>
           </div>
