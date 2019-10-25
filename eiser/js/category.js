@@ -1,5 +1,5 @@
-const backendurl = 'https://proda5-back.herokuapp.com/';
-const frontendurl = 'https://proda5.herokuapp.com/';
+const backendurl = 'http://localhost:8181/';
+  const frontendurl = '/';
 function getUrlVars() {
   
   var vars = {};
