@@ -352,6 +352,7 @@ public class FeaturedProductController {
 	}
 	
 	
+	
 	  public UploadFileResponse uploadSlide(@RequestParam("file") MultipartFile file) {
 		    
 	        String fileName = fileStorageService.storeSlide(file);
