@@ -1,5 +1,5 @@
-const backendurl = 'https://proda5-back.herokuapp.com/';
-  const frontendurl = 'https://proda5.herokuapp.com/';
+const backendurl = 'http://localhost:8181/';
+const frontendurl = 'http://149.28.154.237:82/';
 var link_slider = backendurl +'uploadSlider'
 var sliderUploadButton = document.querySelector('#upload_slider_button')
 var sliderInput = document.querySelector('#sliderUploadInput')
