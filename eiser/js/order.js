@@ -1,6 +1,6 @@
 'use strict';
-const backendurl = 'https://proda5-back.herokuapp.com/';
-  const frontendurl = 'https://proda5.herokuapp.com/';
+const backendurl = 'http://149.28.154.237:81/';
+const frontendurl = 'http://149.28.154.237:82/';
 var link = backendurl+'order'
 var buy = document.querySelector('#buy_button');
 console.log('order 1');

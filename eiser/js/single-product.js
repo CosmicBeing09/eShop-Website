@@ -1,3 +1,4 @@
+'use strict';
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -5,8 +6,9 @@ function getUrlVars() {
     });
     return vars;
 }
-const backendurl = 'http://localhost:8181/';
-  const frontendurl = '/';
+
+const backendurl = 'http://149.28.154.237:81/';
+const frontendurl = 'http://149.28.154.237:82/';
 var id = getUrlVars()["id"];
 //console.log(id)
 var request = new XMLHttpRequest()

@@ -6,11 +6,13 @@
 //     return vars;
 //   }
 //   var category = getUrlVars()["category"];
+const backendurl = 'http://149.28.154.237:81/';
+const frontendurl = 'http://149.28.154.237:82/';
 'use strict'
   const user =  JSON.parse(window.localStorage.getItem('user'));
   var request = new XMLHttpRequest();
   var formData = new FormData();
-  request.open('GET', 'http://localhost:8181/alluser',false);
+  request.open('GET', backendurl+'alluser',false);
   request.onload = function () {
     var data = JSON.parse(this.response)
     data.forEach(temp => {
@@ -56,7 +58,7 @@
               processData: false, contentType: false, cache: false
           }));
          var xhr = new XMLHttpRequest();
-         xhr.open("PUT", 'http://localhost:8181/updateAccountStatus/', false);
+         xhr.open("PUT", backendurl+'updateAccountStatus/', false);
          xhr.onreadystatechange = function () {
            if (this.readyState == 4 && this.status == 200) {
              window.location = "user_control_console.html";
@@ -76,7 +78,7 @@
       button_delete.addEventListener('click', function (event) {
         
          var xhr = new XMLHttpRequest();
-         xhr.open("DELETE", 'http://localhost:8181/deleteUser/' + temp.id, false);
+         xhr.open("DELETE", backendurl+'deleteUser/' + temp.id, false);
          xhr.onreadystatechange = function () {
            if (this.readyState == 4 && this.status == 200) {
              // Here we go on the new page
