@@ -52,16 +52,10 @@
     <scope>test</scope>
       </dependency>
 		<dependency>
-<<<<<<< HEAD
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-=======
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-</dependency>
->>>>>>> 3e082fe35fe702c34988cb14abe74c1bdfc0c00d
-		<dependency>
+    	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
