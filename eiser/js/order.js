@@ -1,6 +1,6 @@
 'use strict';
-const backendurl = 'http://149.28.154.237:81/';
-const frontendurl = 'http://149.28.154.237:82/';
+const backendurl = 'http://149.28.154.237:82/';
+const frontendurl = 'http://149.28.154.237:81/';
 var link = backendurl+'order'
 var buy = document.querySelector('#buy_button');
 console.log('order 1');

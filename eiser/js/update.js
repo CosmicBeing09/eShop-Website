@@ -6,8 +6,8 @@ function getUrlVars() {
     });
     return vars;
 }
-const backendurl = 'http://149.28.154.237:81/';
-const frontendurl = 'http://149.28.154.237:82/';
+const backendurl = 'http://149.28.154.237:82/';
+const frontendurl = 'http://149.28.154.237:81/';
 var link1 = backendurl + 'uploadProduct';
 var update_button = document.querySelector('#update_product_button');
 var multipleFileUploadInput = document.querySelector('#update_multipleFileUploadInput');

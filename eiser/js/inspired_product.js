@@ -1,7 +1,7 @@
 
 var request = new XMLHttpRequest()
-const backendurl = 'http://149.28.154.237:81/';
-const frontendurl = 'http://149.28.154.237:82/';
+const backendurl = 'http://149.28.154.237:82/';
+const frontendurl = 'http://149.28.154.237:81/';
 
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', backendurl+ 'allproduct_type/Inspired', true)
