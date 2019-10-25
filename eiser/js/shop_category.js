@@ -41,7 +41,7 @@ request.onload = function () {
     img.style.height="1000"
     img.style.width="1000"
     product_img.appendChild(img)
-    product_btm = document.createElement('div')
+    const product_btm = document.createElement('div')
     product_btm.setAttribute('class', 'product-btm')
     single_product.appendChild(product_btm)
     const aa = document.createElement('a')

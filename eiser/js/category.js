@@ -45,7 +45,7 @@ request.onload = function () {
       img.alt = ''
       img.width = '200px'
       product_img.appendChild(img)
-      product_btm = document.createElement('div')
+      const product_btm = document.createElement('div')
       //product_btm.setAttribute('class', 'product '+movie.category)
       //product_btm.setAttribute('id',movie.category)
       single_product.appendChild(product_btm)
