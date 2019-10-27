@@ -3,12 +3,8 @@
 
 <script>
 
-    //   const backendurl = 'http://localhost:8181/';
-    //  const frontendurl = '';
-
-    const backendurl = 'http://149.28.154.237:81/';
-    const frontendurl = 'http://149.28.154.237:82/';
-
+const backendurl = 'http://149.28.154.237:82/';
+  const frontendurl = 'http://149.28.154.237:80/';
 
 </script>
 
@@ -291,7 +287,7 @@
                 });
                 var data;
                 window.location.replace(frontendurl + "index.html");
-                xhr.open("POST", myurl, false);
+                xhr.open("POST", myurl, true);
                 xhr.setRequestHeader("Content-Type", "application/json");
                 data = JSON.stringify({
                     "name": name,
