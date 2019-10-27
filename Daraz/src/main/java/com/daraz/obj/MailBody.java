@@ -22,9 +22,10 @@ private String productName;
 private String phoneNo;
 private String price;
 private Date date;
+private String shopName;
 
 
-public MailBody(String id, String address, String productName, String phoneNo, String price, Date date) {
+public MailBody(String id, String address, String productName, String phoneNo, String price, Date date,String shopName) {
 	super();
 	this.id = id;
 	this.address = address;
@@ -32,6 +33,7 @@ public MailBody(String id, String address, String productName, String phoneNo, S
 	this.phoneNo = phoneNo;
 	this.price = price;
 	this.date = date;
+	this.shopName = shopName;
 }
 
 public MailBody() {
@@ -75,6 +77,14 @@ public String getPrice() {
 
 public void setPrice(String price) {
 	this.price = price;
+}
+
+public String getShopName() {
+	return shopName;
+}
+
+public void setShopName(String shopName) {
+	this.shopName = shopName;
 }
 
 }

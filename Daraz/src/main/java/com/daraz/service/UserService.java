@@ -1,5 +1,8 @@
 package com.daraz.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,39 @@ public class UserService {
 			return new UserAccount("NULL","NULL");
 		}
 		
+	}
+	
+	public List<UserAccount> getAllUser(){
+		List<UserAccount> all = new ArrayList<UserAccount>();
+		userAccountRepo.findAll().forEach(all::add);;
+		return all;
+	}
+	
+	public String deleteOneUser(String phone) {
+		userAccountRepo.delete(phone);
+		return "Successfull";
+	}
+	
+	public String updateUser(UserAccount userAccount) {
+		
+		List<UserAccount> all = new ArrayList<UserAccount>();
+		UserAccount temp = new UserAccount();
+		userAccountRepo.findAll().forEach(all::add);;
+		for(int i=0;i<all.size();i++)
+		{
+			if(userAccount.getId()==all.get(i).getId()) {
+				temp = all.get(i);
+				break;
+			}
+		}
+		
+		if(userAccount.getStatus().equals("active"))
+			temp.setStatus("inactive");
+		else if(userAccount.getStatus().equals("inactive"))
+			temp.setStatus("active");
+		
+		userAccountRepo.save(temp);
+		return "Successful";
 	}
 	
 	

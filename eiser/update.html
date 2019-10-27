@@ -3,11 +3,11 @@
 
 <head>
   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script>
+  <!-- <script>
       $(function(){
         $('#footer').load('footer.html');
       });
-    </script>
+    </script> -->
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -153,6 +153,41 @@ border-bottom: 1px solid #e8e8e8;
 overflow-x: hidden;
 word-break: break-all;
 }
+    .modal-content {
+      border-radius: 0px;
+      box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-backdrop.show {
+      opacity: 0.75;
+    }
+
+    .loader {
+      position: relative;
+      text-align: center;
+      margin: 15px auto 35px auto;
+      z-index: 9999;
+      display: block;
+      width: 80px;
+      height: 80px;
+      border: 10px solid rgba(0, 0, 0, .3);
+      border-radius: 50%;
+      border-top-color: #000;
+      animation: spin 1s ease-in-out infinite;
+      -webkit-animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes spin {
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
     </style>
 
 </head>
@@ -229,7 +264,7 @@ word-break: break-all;
             </div>
             
 
-            <div class="form-group">
+            <div class="form-group" id="product_type">
                 <label for="exampleInputEmail1">Product Type</label>
                 <select  id="update_type" class="browser-default custom-select"> 
                   <option selected>Regular</option>
@@ -358,6 +393,19 @@ word-break: break-all;
         </div>
       </div>
     </div>
+      <!--========================================= Modal ========================================-->
+      <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <div class="loader"></div>
+              <div class="loader-txt">
+                <p>Product updating.... <br><br><small>Please wait... </small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </section>
   <!-- =============Form area Ended============ -->
   <footer class="footer-area section_gap">

@@ -22,26 +22,139 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+
+  <style>
+    .modal-content {
+      border-radius: 0px;
+      box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-backdrop.show {
+      opacity: 0.75;
+    }
+
+    .loader {
+      position: relative;
+      text-align: center;
+      margin: 15px auto 35px auto;
+      z-index: 9999;
+      display: block;
+      width: 80px;
+      height: 80px;
+      border: 10px solid rgba(0, 0, 0, .3);
+      border-radius: 50%;
+      border-top-color: #000;
+      animation: spin 1s ease-in-out infinite;
+      -webkit-animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes spin {
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
-<header class="header_area">
-  <div class="main_menu">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light w-100">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <a class="navbar-brand logo_h" href="index.html">
-          <img src="img/logo.png" alt="" />
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-      </nav>
-    </div>
-  </div>
-</header>
+  <!--================Header Menu Area =================-->
+  <header class="header_area">
+      <div class="top_menu">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="float-left">
+                <p>Phone: +8801628330969</p>
+                <p>email: proda5.order@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main_menu">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand logo_h" href="index.html">
+              <img src="img/logo.png" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+              <div class="row w-100 mr-0">
+                <div class="col-lg-7 pr-0">
+                  <ul class="nav navbar-nav center_nav pull-right">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item submenu dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false">Shop</a>
+                      <ul class="dropdown-menu">
+                        <li class="nav-item">
+                          <a class="nav-link" href="shop_category.html">My Product</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="post_item.html">Upload Product</a>
+                        </li>
+                        <li class="nav-item" id="nav_item_user_control">
+                          <a class="nav-link" href="user_control_console.html">User Control</a>
+                        </li>
+                        <li class="nav-item" id="nav_item_edit_slider">
+                          <a class="nav-link" href="edit_slider.html">Edit Home Slider</a>
+                        </li>
+                        <script src="js/nav_item_control.js"></script>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+  
+                <div class="col-lg-5 pr-0">
+                  <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-search" aria-hidden="true"></i>
+                      </a>
+                    </li>
+  
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-shopping-cart"></i>
+                      </a>
+                    </li>
+  
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-user" aria-hidden="true"></i>
+                      </a>
+                    </li>
+  
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-heart" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!--================Header Menu Area =================-->
 
 <body>
 
@@ -68,6 +181,20 @@
     </div>
 
   </section>
+
+           <!--========================================= Modal ========================================-->
+           <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                  <div class="loader"></div>
+                  <div class="loader-txt">
+                    <p>Updating.... <br><br><small>Please wait... </small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
   </section>
 
   <!--================ start footer Area  =================-->

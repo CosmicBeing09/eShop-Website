@@ -10,14 +10,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "useraccount")
 public class UserAccount {
-	@Id
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
 	private int id;
+	@Id
+	private String phone;
+	private String name,shopname,password;
 	
-	private String name,phone,shopname,password;
+	private String type,status;
 	
 	
+	public UserAccount(int id, String name, String phone, String shopname, String password, String type,
+			String status) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.shopname = shopname;
+		this.password = password;
+		this.type = type;
+		this.status = status;
+	}
+
+
 	public UserAccount(String phone, String password) {
 		this.phone = phone;
 		this.password = password;
@@ -96,6 +112,26 @@ public class UserAccount {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

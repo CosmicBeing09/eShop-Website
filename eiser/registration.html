@@ -2,8 +2,14 @@
 <html lang="en">
 
 <script>
-    const backendurl = 'http://149.28.154.237:82/';
-const frontendurl = 'http://149.28.154.237:81/';
+
+    //   const backendurl = 'http://localhost:8181/';
+    //  const frontendurl = '';
+
+    const backendurl = 'http://149.28.154.237:81/';
+    const frontendurl = 'http://149.28.154.237:82/';
+
+
 </script>
 
 <head>
@@ -154,6 +160,42 @@ const frontendurl = 'http://149.28.154.237:81/';
             overflow-x: hidden;
             word-break: break-all;
         }
+
+        .modal-content {
+            border-radius: 0px;
+            box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-backdrop.show {
+            opacity: 0.75;
+        }
+
+        .loader {
+            position: relative;
+            text-align: center;
+            margin: 15px auto 35px auto;
+            z-index: 9999;
+            display: block;
+            width: 80px;
+            height: 80px;
+            border: 10px solid rgba(0, 0, 0, .3);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
     </style>
 
 </head>
@@ -204,6 +246,7 @@ const frontendurl = 'http://149.28.154.237:81/';
 
     <script type="text/javascript">
         function register() {
+
             const name = document.getElementById("register_name").value;
             const shopName = document.getElementById("register_shopName").value;
             const phoneNumber = document.getElementById("register_phone").value;
@@ -238,30 +281,39 @@ const frontendurl = 'http://149.28.154.237:81/';
                 document.getElementById("register_rePassword").focus();
             }
             else {
+
                 var myurl = backendurl + "reg"
                 var xhr = new XMLHttpRequest();
-
+                $("#loadMe").modal({
+                    backdrop: "static", //remove ability to close modal with click
+                    keyboard: false, //remove option to close with keyboard
+                    show: true //Display loader!
+                });
                 var data;
                 window.location.replace(frontendurl + "index.html");
                 xhr.open("POST", myurl, false);
                 xhr.setRequestHeader("Content-Type", "application/json");
-                data = JSON.stringify({ "name": name, "password": password, "phone": phoneNumber, "shopname": shopName });
+                data = JSON.stringify({
+                    "name": name,
+                    "password": password,
+                    "phone": phoneNumber,
+                    "shopname": shopName,
+                    "type": "seller",
+                    "status": "inactive"
+                });
                 var response;
-                
                 xhr.onload = function () {
+
                     if (this.status == 200) {
                         // Here we go on the new page
                         var jsonResponse = JSON.parse(this.response);
                         if (jsonResponse.name != "NULL") {
                             window.localStorage.setItem('user', JSON.stringify(jsonResponse));
-                            
+                            $("#loadMe").modal("hide");
+
                         }
-
-
                     }
                 };
-
-
                 xhr.send(data);
 
 
@@ -309,65 +361,78 @@ const frontendurl = 'http://149.28.154.237:81/';
                 </div>
             </div>
         </div>
+        <!--========================================= Modal ========================================-->
+        <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <div class="loader"></div>
+                        <div class="loader-txt">
+                            <p>Messege is sending.... <br><br><small>Please wait... </small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-     <!--================ start footer Area  =================-->
-  <footer class="footer-area section_gap">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Products</h4>
-          <ul>
-            <ul>
-              <li><a href="category.html?category=Electronics">Electronics</a></li>
-              <li><a href="ategory.html?category=Furniture">Furniture</a></li>
-              <li><a href="category.html?category=Mobile">Smart Phone</a></li>
-              <li><a href="category.html?category=Ladies">Ladies Collection</a></li>
-              <li><a href="category.html?category=Kids">Kids Collection</a></li>
-              <li><a href="category.html?category=Cosmatics">Cosmectics Collection</a></li>
-            </ul>
-          </ul>
+    <!--================ start footer Area  =================-->
+    <footer class="footer-area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 single-footer-widget">
+                    <h4>Products</h4>
+                    <ul>
+                        <ul>
+                            <li><a href="category.html?category=Electronics">Electronics</a></li>
+                            <li><a href="ategory.html?category=Furniture">Furniture</a></li>
+                            <li><a href="category.html?category=Mobile">Smart Phone</a></li>
+                            <li><a href="category.html?category=Ladies">Ladies Collection</a></li>
+                            <li><a href="category.html?category=Kids">Kids Collection</a></li>
+                            <li><a href="category.html?category=Cosmatics">Cosmectics Collection</a></li>
+                        </ul>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 single-footer-widget">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#new_product">New Products</a></li>
+                        <li><a href="#featured_product">Featured Product</a></li>
+
+                        <li><a href="#inspired_product">Inspired Product</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6 single-footer-widget">
+                    <h4> Top Products</h4>
+                    <ul>
+                        <li><a href="category.html?category=Electronics">Electronics</a></li>
+                        <li><a href="ategory.html?category=Furniture">Furniture</a></li>
+                        <li><a href="category.html?category=Mobile">Smart Phone</a></li>
+                        <li><a href="category.html?category=Ladies">Ladies Collection</a></li>
+                        <li><a href="category.html?category=Kids">Kids Collection</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-7 single-footer-widget ml-auto ">
+                    <h4>Contacts</h4>
+                    <ul>
+                        <li style="color: white;">Polash Ahmed</li>
+                        <li style="color: gray;">Mobile No. +8801857763383</li>
+                        <li style="color: white;">Rafi Hasib</li>
+                        <li style="color: gray;">Mobile No. +8801850385455</li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="footer-bottom row align-items-center">
+                <p class="footer-text m-0 col-lg-8 col-md-12">
+                    Site Developed & Managed By: Raihan Ullah, SWE, SUST.
+                </p>
+
+            </div>
         </div>
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#new_product">New Products</a></li>
-            <li><a href="#featured_product">Featured Product</a></li>
-
-            <li><a href="#inspired_product">Inspired Product</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4> Top Products</h4>
-          <ul>
-            <li><a href="category.html?category=Electronics">Electronics</a></li>
-            <li><a href="ategory.html?category=Furniture">Furniture</a></li>
-            <li><a href="category.html?category=Mobile">Smart Phone</a></li>
-            <li><a href="category.html?category=Ladies">Ladies Collection</a></li>
-            <li><a href="category.html?category=Kids">Kids Collection</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-7 single-footer-widget ml-auto ">
-          <h4>Contacts</h4>
-          <ul>
-            <li style="color: white;">Polash Ahmed</li>
-            <li style="color: gray;">Mobile No. +8801857763383</li>
-            <li style="color: white;">Rafi Hasib</li>
-            <li style="color: gray;">Mobile No. +8801850385455</li>
-
-          </ul>
-        </div>
-
-      </div>
-      <div class="footer-bottom row align-items-center">
-        <p class="footer-text m-0 col-lg-8 col-md-12">
-          Site Developed & Managed By: Raihan Ullah, SWE, SUST.
-        </p>
-
-      </div>
-    </div>
-  </footer>
-  <!--================ End footer Area  =================-->
+    </footer>
+    <!--================ End footer Area  =================-->
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

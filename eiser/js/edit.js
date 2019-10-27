@@ -1,6 +1,10 @@
 'use strict';
-const backendurl = 'http://149.28.154.237:82/';
-const frontendurl = 'http://149.28.154.237:81/';
+// const backendurl = 'http://localhost:8181/';
+// const frontendurl = '';
+
+const backendurl = 'http://149.28.154.237:81/';
+const frontendurl = 'http://149.28.154.237:82/';
+
 
 var edit_button = document.querySelector('#edit_product_button');
 function getUrlVars() {
@@ -19,12 +23,17 @@ var id = getUrlVars()["id"];
 
 var delete_button = document.querySelector('#delete_product_button')
 delete_button.addEventListener('click', function(event){
-  console.log("delete clicked")
+  var $load = $("#loadMe").modal({
+    backdrop: "static", //remove ability to close modal with click
+    keyboard: false, //remove option to close with keyboard
+    show: true //Display loader!
+  });
   var request1 = new XMLHttpRequest()
   var url=backendurl+ 'delete/' + id
   request1.open('DELETE',url,true)
   request1.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      $("#loadMe").modal("hide");
       // Here we go on the new page
       alert("Deleted")
       window.location = frontendurl+"shop_category.html";

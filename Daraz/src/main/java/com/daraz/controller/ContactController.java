@@ -24,7 +24,7 @@ public class ContactController {
 	@PostMapping("/contact")
 	public String contact (@RequestBody Contact mailBody) {
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
-		mailMessage.setTo("nayeemahmed24@gmail.com");
+		mailMessage.setTo("proda5.order@gmail.com");
 		mailMessage.setSubject(mailBody.getMessege());
 		mailMessage.setFrom("nonlovesme@gmail.com");
 		mailMessage.setText(mailBody.getMessege() + " Messege Sent By "+ mailBody.getName() + "  email: "+ mailBody.getEmail());

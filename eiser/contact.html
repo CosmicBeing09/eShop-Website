@@ -3,8 +3,12 @@
 
 <head>
   <script>
-    const backendurl = 'http://localhost:8181/';
-    const frontendurl = 'https://proda5.herokuapp.com/';
+     //   const backendurl = 'http://localhost:8181/';
+      //  const frontendurl = '';
+       
+      const backendurl = 'http://149.28.154.237:81/';
+       const frontendurl = 'http://149.28.154.237:82/';
+       
   </script>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
@@ -60,6 +64,7 @@
       }
     }
   </style>
+  
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
@@ -153,10 +158,8 @@
                         item3.href = frontendurl;
                         item3.textContent = 'Logout'
                         divnav.appendChild(item3)
-                        item3.onclick = function () { window.localStorage.clear(); };
-
-
-
+                        item3.onclick = function () { window.localStorage.clear(); 
+                        };
                       }
                     </script>
                   </li>
@@ -196,7 +199,7 @@
       var subject = document.getElementById('subject').value;
       var email = document.getElementById('email').value;
       var messege = document.getElementById('message').value;
-      console.log(messege)
+     // console.log(messege)
 
       if (name == "") {
         alert('Please Fill Name Field')
@@ -251,9 +254,6 @@
   </script>
   <section class="section_gap">
     <div class="container">
-
-
-
       <div class="row">
         <div class="col-12">
           <h2 class="contact-title">Get in Touch</h2>

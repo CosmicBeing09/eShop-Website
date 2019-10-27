@@ -1,4 +1,5 @@
 'use strict';
+var user =  JSON.parse(window.localStorage.getItem('user'))
 function getUrlVars() {
     var vars = {};
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -6,13 +7,17 @@ function getUrlVars() {
     });
     return vars;
 }
-const backendurl = 'http://149.28.154.237:82/';
-const frontendurl = 'http://149.28.154.237:81/';
+
+// const backendurl = 'http://localhost:8181/';
+// const frontendurl = '';
+
+const backendurl = 'http://149.28.154.237:81/';
+const frontendurl = 'http://149.28.154.237:82/';
+
+
 var link1 = backendurl + 'uploadProduct';
 var update_button = document.querySelector('#update_product_button');
 var multipleFileUploadInput = document.querySelector('#update_multipleFileUploadInput');
-// var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
-// var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
 
 var id = getUrlVars()["id"];
 var request = new XMLHttpRequest()
@@ -26,9 +31,12 @@ request.onload = function () {
   // Begin accessing JSON data here
 
     var data = JSON.parse(this.response)
-    // console.log(data)
-    // console.log(data.name)
-  //  data.forEach(movie => {
+    if(user.type.length!=0){
+      if(user.type!="admin"){
+        var product_type = document.getElementById("product_type");
+        product_type.style.display="none";
+      }
+    }
         const name = document.getElementById('update_product_name')
         name.value = data.name
         const price = document.getElementById('update_price')
@@ -64,10 +72,7 @@ function uploadMultipleFiles(files) {
     for(var index = 0; index < files.length; index++) {
         formData.append("files", files[index]);
     }
-    // console.log(document.getElementById("update_price").value)
-    // console.log(document.getElementById("update_discount_price").value)
-    // console.log(document.getElementById("update_procuct_brand").value)
-    // console.log(document.getElementById("update_procuct_model").value)
+  
     var brand=  document.getElementById("update_procuct_brand").value
     var model = document.getElementById("update_procuct_model").value
     var height = document.getElementById("update_procuct_height").value
@@ -95,6 +100,7 @@ function uploadMultipleFiles(files) {
         "weight" : weight,
         "warrenty" : warrenty,
         "type" : type,
+        "userId":user.id
 
     })], {
             type: "application/json",
@@ -105,6 +111,7 @@ function uploadMultipleFiles(files) {
 
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+          $("#loadMe").modal("hide");
           // Here we go on the new page
           alert("Successfully Updated")
           window.location = "shop_category.html";
@@ -117,6 +124,11 @@ function uploadMultipleFiles(files) {
 update_button.addEventListener('click', function(event){
     var files = multipleFileUploadInput.files;
     //console.log(files)
+    var $load = $("#loadMe").modal({
+      backdrop: "static", //remove ability to close modal with click
+      keyboard: false, //remove option to close with keyboard
+      show: true //Display loader!
+    });
     uploadMultipleFiles(files);
     event.preventDefault();
 }, true);

@@ -16,6 +16,7 @@ public class Product_temp {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(columnDefinition = "serial")
 private String id;
+private String shopName;
 private String userId;
 private String type;
 private String name;
@@ -39,7 +40,7 @@ private String smallImage3;
 
 public Product_temp(String id, String userId, String type, String name, String category, String details, String price,
 		String discountPrice, String brand, String model, String height, String width, String weight, String warrenty,
-		String image1, String image2, String image3, String smallImage1, String smallImage2, String smallImage3) {
+		String image1, String image2, String image3, String smallImage1, String smallImage2, String smallImage3,String shopName) {
 	super();
 	this.id = id;
 	this.userId = userId;
@@ -61,6 +62,7 @@ public Product_temp(String id, String userId, String type, String name, String c
 	this.smallImage1 = smallImage1;
 	this.smallImage2 = smallImage2;
 	this.smallImage3 = smallImage3;
+	this.shopName=shopName;
 }
 public Product_temp() {
 	super();
@@ -185,5 +187,12 @@ public String getSmallImage3() {
 public void setSmallImage3(String smallImage3) {
 	this.smallImage3 = smallImage3;
 }
+public String getShopName() {
+	return shopName;
+}
+public void setShopName(String shopName) {
+	this.shopName = shopName;
+}
+
 
 }
