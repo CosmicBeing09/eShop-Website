@@ -1,5 +1,5 @@
-const backendurl = 'https://proda5-back.herokuapp.com/';
-  const frontendurl = 'https://proda5.herokuapp.com/';
+const backendurl = 'http://149.28.154.237:82/';
+const frontendurl = 'http://149.28.154.237:80/';
 var request = new XMLHttpRequest()
 
 // Open a new connection, using the GET request on the URL endpoint
