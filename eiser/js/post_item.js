@@ -1,4 +1,5 @@
 'use strict';
+
 // const backendurl = 'http://localhost:8181/';
 // const frontendurl = 'http://149.28.154.237:82/';
 
@@ -16,6 +17,7 @@ if (user.type.length != null) {
     upload_home_slider_button.style.display="none";
   }
 }
+
 
 
 var postItemButton = document.querySelector('#upload_product_button');

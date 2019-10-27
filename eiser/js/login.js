@@ -1,9 +1,11 @@
 'use strict';
+
 // const backendurl = 'http://localhost:8181/';
 // const frontendurl = 'http://149.28.154.237:82/';
 
 const backendurl = 'http://149.28.154.237:81/';
 const frontendurl = 'http://149.28.154.237:82/';
+
 
 var link = backendurl+ 'reg'
 var multipleUploadForm = document.querySelector('#button_login');

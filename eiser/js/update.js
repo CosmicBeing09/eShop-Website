@@ -7,11 +7,13 @@ function getUrlVars() {
     });
     return vars;
 }
+
 // const backendurl = 'http://localhost:8181/';
 // const frontendurl = '';
 
 const backendurl = 'http://149.28.154.237:81/';
 const frontendurl = 'http://149.28.154.237:82/';
+
 
 var link1 = backendurl + 'uploadProduct';
 var update_button = document.querySelector('#update_product_button');

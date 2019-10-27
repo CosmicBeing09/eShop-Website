@@ -1,3 +1,4 @@
+
 var sliderUploadButton = document.querySelector('#upload_slider_button')
 var sliderInput = document.querySelector('#sliderUploadInput')
 
