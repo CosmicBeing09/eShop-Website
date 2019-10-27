@@ -1,5 +1,10 @@
-const backendurl = 'https://proda5-back.herokuapp.com/';
-const frontendurl = 'https://proda5.herokuapp.com/';
+'use strict';
+// const backendurl = 'http://localhost:8181/';
+// const frontendurl = 'http://149.28.154.237:82/';
+
+// const backendurl = 'http://149.28.154.237:81/';
+// const frontendurl = 'http://149.28.154.237:82/';
+
 function getUrlVars() {
   
   var vars = {};
@@ -44,7 +49,7 @@ request.onload = function () {
       img.alt = ''
       img.width = '200px'
       product_img.appendChild(img)
-      product_btm = document.createElement('div')
+      const product_btm = document.createElement('div')
       //product_btm.setAttribute('class', 'product '+movie.category)
       //product_btm.setAttribute('id',movie.category)
       single_product.appendChild(product_btm)

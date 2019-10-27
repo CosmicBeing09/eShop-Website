@@ -20,265 +20,9 @@
   <link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-  <!------ Include the above in your HEAD tag ---------->
-
-  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
   <!-- main css -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-
-  <!-- <style class="cp-pen-styles">
-    @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-    @import url("https://fonts.googleapis.com/css?family=Raleway");
-
-    .body {
-      background-color: #eff5f6;
-    }
-
-    .wrapper {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-    }
-
-    h1 {
-      font-family: inherit;
-      margin: 0 0 .75em 0;
-      color: #728c8d;
-      text-align: center;
-    }
-
-    .box {
-      display: block;
-      min-width: 300px;
-      height: 300px;
-      margin: 10px;
-      background-color: white;
-      border-radius: 5px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      overflow: hidden;
-    }
-
-    .upload-options {
-      position: relative;
-      height: 75px;
-      background-color: cadetblue;
-      cursor: pointer;
-      overflow: hidden;
-      text-align: center;
-      -webkit-transition: background-color ease-in-out 150ms;
-      transition: background-color ease-in-out 150ms;
-    }
-
-    .upload-options:hover {
-      background-color: #7fb1b3;
-    }
-
-    .upload-options input {
-      width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-      z-index: -1;
-    }
-
-    .upload-options label {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      font-weight: 400;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .upload-options label::after {
-      content: 'add';
-      font-family: 'Material Icons';
-      position: absolute;
-      font-size: 2.5rem;
-      color: #e6e6e6;
-      top: calc(50% - 2.5rem);
-      left: calc(50% - 1.25rem);
-      z-index: 0;
-    }
-
-    .upload-options label span {
-      display: inline-block;
-      width: 50%;
-      height: 100%;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      vertical-align: middle;
-      text-align: center;
-    }
-
-    .upload-options label span:hover i.material-icons {
-      color: lightgray;
-    }
-
-    .js--image-preview {
-      height: 225px;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      background-image: url("");
-      background-color: white;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
-    .js--image-preview::after {
-      content: "photo_size_select_actual";
-      font-family: 'Material Icons';
-      position: relative;
-      font-size: 4.5em;
-      color: #e6e6e6;
-      top: calc(50% - 3rem);
-      left: calc(50% - 2.25rem);
-      z-index: 0;
-    }
-
-    .js--image-preview.js--no-default::after {
-      display: none;
-    }
-
-    i.material-icons {
-      -webkit-transition: color 100ms ease-in-out;
-      transition: color 100ms ease-in-out;
-      font-size: 2.25em;
-      line-height: 55px;
-      color: white;
-      display: block;
-    }
-
-    .drop {
-      display: block;
-      position: absolute;
-      background: rgba(95, 158, 160, 0.2);
-      border-radius: 100%;
-      -webkit-transform: scale(0);
-      transform: scale(0);
-    }
-
-    .animate {
-      -webkit-animation: ripple 0.4s linear;
-      animation: ripple 0.4s linear;
-    }
-
-    @-webkit-keyframes ripple {
-      100% {
-        opacity: 0;
-        -webkit-transform: scale(2.5);
-        transform: scale(2.5);
-      }
-    }
-
-    @keyframes ripple {
-      100% {
-        opacity: 0;
-        -webkit-transform: scale(2.5);
-        transform: scale(2.5);
-      }
-    }
-  </style> -->
-<!-- <style>
-.preview-images-zone {
-    width: 100%;
-    border: 1px solid #ddd;
-    min-height: 180px;
-    /* display: flex; */
-    padding: 5px 5px 0px 5px;
-    position: relative;
-    overflow:auto;
-}
-.preview-images-zone > .preview-image:first-child {
-    height: 185px;
-    width: 185px;
-    position: relative;
-    margin-right: 5px;
-}
-.preview-images-zone > .preview-image {
-    height: 90px;
-    width: 90px;
-    position: relative;
-    margin-right: 5px;
-    float: left;
-    margin-bottom: 5px;
-}
-.preview-images-zone > .preview-image > .image-zone {
-    width: 100%;
-    height: 100%;
-}
-.preview-images-zone > .preview-image > .image-zone > img {
-    width: 100%;
-    height: 100%;
-}
-.preview-images-zone > .preview-image > .tools-edit-image {
-    position: absolute;
-    z-index: 100;
-    color: #fff;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-    display: none;
-}
-.preview-images-zone > .preview-image > .image-cancel {
-    font-size: 18px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-weight: bold;
-    margin-right: 10px;
-    cursor: pointer;
-    display: none;
-    z-index: 100;
-}
-.preview-image:hover > .image-zone {
-    cursor: move;
-    opacity: .5;
-}
-.preview-image:hover > .tools-edit-image,
-.preview-image:hover > .image-cancel {
-    display: block;
-}
-.ui-sortable-helper {
-    width: 90px !important;
-    height: 90px !important;
-}
-
-.container {
-    padding-top: 50px;
-}
-</style> -->
 
 <style>
     * {
@@ -412,28 +156,138 @@ border-bottom: 1px solid #e8e8e8;
 overflow-x: hidden;
 word-break: break-all;
 }
+.modal-content {
+      border-radius: 0px;
+      box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-backdrop.show {
+      opacity: 0.75;
+    }
+
+    .loader {
+      position: relative;
+      text-align: center;
+      margin: 15px auto 35px auto;
+      z-index: 9999;
+      display: block;
+      width: 80px;
+      height: 80px;
+      border: 10px solid rgba(0, 0, 0, .3);
+      border-radius: 50%;
+      border-top-color: #000;
+      animation: spin 1s ease-in-out infinite;
+      -webkit-animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes spin {
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
     </style>
 
 </head>
-<header class="header_area">
-  <div class="main_menu">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light w-100">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <a class="navbar-brand logo_h" href="index.html">
-          <img src="img/logo.png" alt="" />
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-      </nav>
-    </div>
-  </div>
-</header>
+  <!--================Header Menu Area =================-->
+  <header class="header_area">
+      <div class="top_menu">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="float-left">
+                <p>Phone: +8801628330969</p>
+                <p>email: proda5.order@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main_menu">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand logo_h" href="index.html">
+              <img src="img/logo.png" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+              <div class="row w-100 mr-0">
+                <div class="col-lg-7 pr-0">
+                  <ul class="nav navbar-nav center_nav pull-right">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item submenu dropdown">
+                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-haspopup="true" aria-expanded="false">Shop</a>
+                      <ul class="dropdown-menu">
+                        <li class="nav-item">
+                          <a class="nav-link" href="shop_category.html">My Product</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="post_item.html">Upload Product</a>
+                        </li>
+                        <li class="nav-item" id="nav_item_user_control">
+                          <a class="nav-link" href="user_control_console.html">User Control</a>
+                        </li>
+                        <li class="nav-item" id="nav_item_edit_slider">
+                          <a class="nav-link" href="edit_slider.html">Edit Home Slider</a>
+                        </li>
+                        <script src="js/nav_item_control.js"></script>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+  
+                <div class="col-lg-5 pr-0">
+                  <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-search" aria-hidden="true"></i>
+                      </a>
+                    </li>
+  
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-shopping-cart"></i>
+                      </a>
+                    </li>
+  
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-user" aria-hidden="true"></i>
+                      </a>
+                    </li>
+  
+                    <li class="nav-item">
+                      <a href="#" class="icons">
+                        <i class="ti-heart" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!--================Header Menu Area =================-->
 
 <body>
 
@@ -562,6 +416,8 @@ word-break: break-all;
         </div>
       </div>
     </div>
+     
+        
   </section>
 
   <div class="container">
@@ -573,50 +429,6 @@ word-break: break-all;
       </div>
     </div>
   </div>
-
-  <!-- ========== image select area ========= -->
-  <!-- <div class="form-group">
-    <div class="wrapper">
-      <div class="box">
-        <div class="js--image-preview"></div>
-        <div class="upload-options">
-          <label>
-            <input type="file" class="image-upload" name="file" accept="image/*" />
-          </label>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="js--image-preview"></div>
-        <div class="upload-options">
-          <label>
-            <input type="file" class="image-upload" accept="image/*" />
-          </label>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="js--image-preview"></div>
-        <div class="upload-options">
-          <label>
-            <input type="file" class="image-upload" accept="image/*" />
-          </label>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div class="container">
-      <fieldset class="form-group">
-          <a href="javascript:void(0)" onclick="$('#multipleInput').click()">Upload Image</a>
-          <input type="file" id="multipleInput" name="files" style="display: none;" class="form-control" multiple>
-      </fieldset>
-
-      <div class="preview-images-zone" id="input">
-      </div>
-  </div> -->
-
-  <!-- <div class="upload-container"> -->
       <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -650,7 +462,7 @@ word-break: break-all;
   </section>
 
 
-  <div class="container">
+  <div class="container" id="upload_home_slider_title">
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
@@ -660,7 +472,7 @@ word-break: break-all;
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="upload_home_slider_input">
         <div class="row justify-content-center">
           <div class="col-lg-12">
         <div class="multiple-upload">
@@ -676,7 +488,7 @@ word-break: break-all;
         </div>
         </div>
 
-        <section class="blog_area single-post-area section_gap">
+        <section class="blog_area single-post-area section_gap" id="upload_home_slider_button">
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-lg-12">
@@ -689,6 +501,19 @@ word-break: break-all;
               </div>
             </div>
           </section>
+             <!--========================================= Modal ========================================-->
+        <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-body text-center">
+                <div class="loader"></div>
+                <div class="loader-txt">
+                  <p>Uploading.... <br><br><small>Please wait... </small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
   <!-- =============Form area Ended============ -->
   <footer class="footer-area section_gap">
       <div class="container">
@@ -757,7 +582,7 @@ word-break: break-all;
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   
-  <script src="js/post_item.js" ></script>
+  <script type="text/javascript" src="js/post_item.js" ></script>
   <script src="js/post_slider.js"></script>
 </body>
 

@@ -23,6 +23,43 @@
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/responsive.css" />
+        <style>
+          .modal-content {
+            border-radius: 0px;
+            box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.7);
+          }
+      
+          .modal-backdrop.show {
+            opacity: 0.75;
+          }
+      
+          .loader {
+            position: relative;
+            text-align: center;
+            margin: 15px auto 35px auto;
+            z-index: 9999;
+            display: block;
+            width: 80px;
+            height: 80px;
+            border: 10px solid rgba(0, 0, 0, .3);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+          }
+      
+          @keyframes spin {
+            to {
+              -webkit-transform: rotate(360deg);
+            }
+          }
+      
+          @-webkit-keyframes spin {
+            to {
+              -webkit-transform: rotate(360deg);
+            }
+          }
+        </style>
       </head>
     
       <body>
@@ -793,6 +830,19 @@
               </div> -->
             </div>
           </div>
+            <!--========================================= Modal ========================================-->
+    <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <div class="loader"></div>
+            <div class="loader-txt">
+              <p>Deleting product.... <br><br><small>Please wait... </small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
         </section>
         <!--================End Product Description Area =================-->
         <footer class="footer-area section_gap">

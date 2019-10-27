@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script>
+      //   const backendurl = 'http://localhost:8181/';
+      //  const frontendurl = '';
+       
+       const backendurl = 'http://149.28.154.237:81/';
+       const frontendurl = 'http://149.28.154.237:82/';
+       
+       </script>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -32,8 +40,8 @@
           <div class="row">
             <div class="col-lg-7">
               <div class="float-left">
-                <p>Phone: +8801852606036</p>
-                <p>email: nayeemahmed24@gmail.com</p>
+                  <p>Phone: +8801628330969</p>
+                  <p>email: proda5.order@gmail.com</p>
               </div>
             </div>
             <!-- <div class="col-lg-5">
@@ -99,59 +107,133 @@
                         </li> -->
                       </ul>
                     </li>
-                   
-                    <!-- <li class="nav-item submenu dropdown">
-                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                        aria-haspopup="true" aria-expanded="false">Pages</a>
-                      <ul class="dropdown-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="tracking.html">Tracking</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="elements.html">Elements</a>
-                        </li>
-                      </ul>
-                    </li> -->
                     <li class="nav-item">
                       <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                   </ul>
                 </div>
-  
-                <div class="col-lg-5 pr-0">
-                  <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-search" aria-hidden="true"></i>
-                      </a>
-                    </li>
-  
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-shopping-cart"></i>
-                      </a>
-                    </li>
-  
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-user" aria-hidden="true"></i>
-                      </a>
-                    </li>
-  
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-heart" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </div>
+                <!-- Dropdown -->
+                <div class="col-lg-5 pr-0">
+                    <ul class="nav navbar-nav navbar-right right_nav pull-right">
+    
+                      <li class="nav-item dropdown" id="listnav">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                          Login/Register
+                        </a>
+                        <script>
+                          var loginReg = document.getElementById('navbardrop');
+                          if (window.localStorage.getItem('user') == null) {
+                            loginReg.setAttribute('data-target', '#login');
+                            loginReg.setAttribute('data-toggle', 'modal');
+                          }
+                          else {
+                            var data = window.localStorage.getItem('user');
+                            var obj = JSON.parse(data);
+                            document.getElementById('navbardrop').textContent = obj.name;
+                            const arw = document.createElement('i');
+                            arw.setAttribute('class', 'dearrow');
+                            document.getElementById('navbardrop').appendChild(arw);
+                            const listnav = document.getElementById('listnav');
+                            const divnav = document.createElement('div');
+                            divnav.setAttribute('class', 'dropdown-menu');
+                            listnav.appendChild(divnav);
+    
+                            const item2 = document.createElement('a');
+                            item2.setAttribute('class', 'dropdown-item')
+                            item2.href = "shop_category.html"
+                            item2.textContent = 'My Products'
+                            divnav.appendChild(item2)
+    
+                            const item3 = document.createElement('a');
+                            item3.setAttribute('class', 'dropdown-item')
+                            item3.href = frontendurl;
+                            item3.textContent = 'Logout'
+                            divnav.appendChild(item3)
+                            item3.onclick = function () { window.localStorage.clear(); 
+                              window.location.replace(frontendurl + "index.html");
+                            };
+                          }
+                        </script>
+                      </li>
+                    </ul>
+                  </div>
             </div>
           </nav>
         </div>
       </div>
     </header>
     <!--================Header Menu Area =================-->
+
+    
+     <!--================ START POP UP LOGIN  =================-->
+
+  <script type="text/javascript">
+    function submitform() {
+      const phone = document.getElementById("login_username").value;
+      const password = document.getElementById("login_password").value;
+
+      var myurl = backendurl + "login";
+      var xhr = new XMLHttpRequest();
+
+      var data;
+
+      xhr.open("POST", myurl, false);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      data = JSON.stringify({ "phone": phone, "password": password });
+      var response;
+      xhr.onload = function () {
+        if (this.status == 200) {
+          // Here we go on the new page
+          var jsonResponse = JSON.parse(this.response);
+          if (jsonResponse.phone != "NULL") {
+            if(jsonResponse.status=="active"){
+            window.localStorage.setItem('user', JSON.stringify(jsonResponse));
+            window.location.replace(frontendurl + "shop_category.html");
+            // alert('AAA' + JSON.stringify(jsonResponse))
+          }
+          else{
+            alert("Account not activated yet");
+          }
+        }
+          else {
+            alert("Wrong Phone Number or Password");
+          }
+
+        }
+      };
+
+
+      xhr.send(data);
+
+
+    }
+  </script>
+
+  <div id="login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-body">
+          <button data-dismiss="modal" class="close">&times;</button>
+          <h4>Login</h4>
+          <form>
+            <input type="text" id="login_username" class="username form-control" placeholder="Phone Number" />
+            <input type="password" id="login_password" class="password form-control" placeholder="Password" />
+            <div>
+              <button class="btn login" type="button" value="Login" onclick="submitform()">Login</button>
+              <button class="btn login" type="button"
+                onclick="location.href = frontendurl+'registration.html';">Registration</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--================ POP UP LOGIN END =================-->
+
     <!--================Home Banner Area =================-->
     <section class="banner_area">
       <div class="banner_inner d-flex align-items-center">

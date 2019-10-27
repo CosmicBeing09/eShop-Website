@@ -3,8 +3,12 @@
 <!--   Styles For Pop Up  -->
 
 <script>
-  const backendurl = 'https://proda5-back.herokuapp.com/';
-  const frontendurl = 'https://proda5.herokuapp.com/';
+  //   const backendurl = 'http://localhost:8181/';
+  //  const frontendurl = '';
+
+  const backendurl = 'http://149.28.154.237:81/';
+  const frontendurl = 'http://149.28.154.237:82/';
+
 </script>
 <style>
   body {
@@ -136,8 +140,8 @@
         <div class="row">
           <div class="col-lg-7">
             <div class="float-left">
-              <p>Phone: +8801852606036</p>
-              <p>email: nayeemahmed24@gmail.com</p>
+              <p>Phone: +8801628330969</p>
+              <p>email: proda5.order@gmail.com</p>
             </div>
           </div>
         </div>
@@ -175,9 +179,9 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                       </li>
                     </ul>
-                    <li class="nav-item ">
+                    <!-- <li class="nav-item ">
                       <a class="nav-link" href="about.html">About Us</a>
-                    </li>
+                    </li> -->
               </div>
 
               <!-- Dropdown -->
@@ -218,9 +222,6 @@
                         item3.textContent = 'Logout'
                         divnav.appendChild(item3)
                         item3.onclick = function () { window.localStorage.clear(); };
-
-
-
                       }
                     </script>
                   </li>
@@ -258,9 +259,14 @@
           // Here we go on the new page
           var jsonResponse = JSON.parse(this.response);
           if (jsonResponse.phone != "NULL") {
-            window.localStorage.setItem('user', JSON.stringify(jsonResponse));
-            window.location.replace(frontendurl + "shop_category.html");
-            // alert('AAA' + JSON.stringify(jsonResponse))
+            if (jsonResponse.status == "active") {
+              window.localStorage.setItem('user', JSON.stringify(jsonResponse));
+              window.location.replace(frontendurl + "shop_category.html");
+              // alert('AAA' + JSON.stringify(jsonResponse))
+            }
+            else {
+              alert("Account not activated yet");
+            }
           }
           else {
             alert("Wrong Phone Number or Password");
@@ -300,22 +306,22 @@
 
   <!--================ POP UP LOGIN END =================-->
 
-<!--================Home Banner Area =================-->
-<section class="home_banner_area mb-40">
-  <div class="banner_inner d-flex align-items-center">
-    <div class="container">
-      <div class="banner_content row">
-        <div class="col-lg-12">
-          <p class="sub text-uppercase">Smart Gadget Collection</p>
-          <h3><span>Show</span> Your <br />Personal <span>Style</span></h3>
-          <h4>A place for your own choices!</h4>
-          <a class="main_btn mt-40" href="category.html?category==Mobile">View Collection</a>
+  <!--================Home Banner Area =================-->
+  <section class="home_banner_area mb-40">
+    <div class="banner_inner d-flex align-items-center">
+      <div class="container">
+        <div class="banner_content row">
+          <div class="col-lg-12">
+            <p class="sub text-uppercase">Smart Gadget Collection</p>
+            <h3><span>Show</span> Your <br />Personal <span>Style</span></h3>
+            <h4>A place for your own choices!</h4>
+            <a class="main_btn mt-40" href="category.html">View Collection</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!--================End Home Banner Area =================-->
+  </section>
+  <!--================End Home Banner Area =================-->
 
 
 
@@ -353,8 +359,8 @@
   <!-- </div> -->
   <!-- </section> -->
 
-  
- 
+
+
   <!--================ Feature Product Area =================-->
   <section class="feature_product_area section_gap_bottom_custom" id="featured_product">
     <div class="container">
@@ -374,9 +380,9 @@
   <!--================ End Feature Product Area =================-->
 
   <!--================ Offer Area =================-->
-  <div id="container"class="mb-40">
-    <img id="image"style="width:100%;" src="img/banner/shoe_banner1.jpg">
-</div>
+  <div id="container" class="mb-40">
+    <img id="image" style="width:100%;" src="img/banner/shoe_banner1.jpg">
+  </div>
   <!--================ End Offer Area =================-->
 
   <!--================ New Product Area =================-->
@@ -398,8 +404,8 @@
   </section>
   <!--================ End New Product Area =================-->
   <div id="container" class="mb-40">
-    <img id="image"style="width:100%;" src="img/banner/furniture_banner.jpg">
-</div>
+    <img id="image" style="width:100%;" src="img/banner/furniture_banner.jpg">
+  </div>
   <!--================ Inspired Product Area =================-->
   <section class="inspired_product_area section_gap_bottom_custom" id="inspired_product">
     <div class="container">

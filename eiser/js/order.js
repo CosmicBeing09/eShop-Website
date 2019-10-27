@@ -1,13 +1,12 @@
 'use strict';
-const backendurl = 'https://proda5-back.herokuapp.com/';
-  const frontendurl = 'https://proda5.herokuapp.com/';
+// const backendurl = 'http://localhost:8181/';
+// const frontendurl = '';
+
+// const backendurl = 'http://149.28.154.237:81/';
+// const frontendurl = 'http://149.28.154.237:82/';
+
 var link = backendurl+'order'
 var buy = document.querySelector('#buy_button');
-console.log('order 1');
-// var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
-// var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
-
- 
 
 function order() {
     var formData = new FormData();
@@ -15,7 +14,8 @@ function order() {
         "address": document.getElementById('order_address').value,
         "productName":document.getElementById('product-name').textContent,
         "phoneNo": document.getElementById('order_phone_no').value,
-        "price": document.getElementById('product-price').textContent
+        "price": document.getElementById('product-price').textContent,
+        "shopName": document.getElementById('shop-name').textContent
 
     })], {
             type: "application/json",
@@ -26,6 +26,7 @@ function order() {
     xhr.onreadystatechange = function() {
       console.log('order 2');
         if (this.readyState == 4 && this.status == 200) {
+          $("#loadMe").modal("hide");
           alert("Succesfully ordered your product")
         }
       };
@@ -34,5 +35,10 @@ function order() {
 buy.addEventListener('click', function(event){
     
   order();
-    event.preventDefault();
+  var $load = $("#loadMe").modal({
+    backdrop: "static", //remove ability to close modal with click
+    keyboard: false, //remove option to close with keyboard
+    show: true //Display loader!
+  });
+   event.preventDefault();
 }, true);

@@ -71,23 +71,23 @@ public class FileStorageService {
             ImageIO.write(output, "png", baos);
             baos.flush();
             MultipartFile file_temp =new MockMultipartFile(fileName,baos.toByteArray());
-            //Files.copy(file_temp.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-            Map uploadResult = null;
-    		if (file_temp.isEmpty()){
-                //model.addAttribute("message","Please select a file to upload");
-                return "NO FILE";
-            }
-            try {
-                 uploadResult =  cloudc.upload(file_temp.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
-//                model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
-//                model.addAttribute("imageurl", uploadResult.get("url"));
-            } catch (IOException e){
-                e.printStackTrace();
-//                model.addAttribute("message", "Sorry I can't upload that!");
-                
-            }
-            return (String) uploadResult.get("url");
-            //return fileName;
+            Files.copy(file_temp.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+//            Map uploadResult = null;
+//    		if (file_temp.isEmpty()){
+//                //model.addAttribute("message","Please select a file to upload");
+//                return "NO FILE";
+//            }
+//            try {
+//                 uploadResult =  cloudc.upload(file_temp.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+////                model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
+////                model.addAttribute("imageurl", uploadResult.get("url"));
+//            } catch (IOException e){
+//                e.printStackTrace();
+////                model.addAttribute("message", "Sorry I can't upload that!");
+//                
+//            }
+//            return (String) uploadResult.get("url");
+            return fileName;
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
@@ -115,23 +115,23 @@ public class FileStorageService {
             ImageIO.write(output, "png", baos);
             baos.flush();
             MultipartFile file_temp =new MockMultipartFile(fileName,baos.toByteArray());
-//            Files.copy(file_temp.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-            Map uploadResult = null;
-    		if (file_temp.isEmpty()){
-                //model.addAttribute("message","Please select a file to upload");
-                return "NO FILE";
-            }
-            try {
-                 uploadResult =  cloudc.upload(file_temp.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
-//                model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
-//                model.addAttribute("imageurl", uploadResult.get("url"));
-            } catch (IOException e){
-                e.printStackTrace();
-//                model.addAttribute("message", "Sorry I can't upload that!");
-                
-            }
-            return (String) uploadResult.get("url");
-//            return fileName;
+            Files.copy(file_temp.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+//            Map uploadResult = null;
+//    		if (file_temp.isEmpty()){
+//                //model.addAttribute("message","Please select a file to upload");
+//                return "NO FILE";
+//            }
+//            try {
+//                 uploadResult =  cloudc.upload(file_temp.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+////                model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
+////                model.addAttribute("imageurl", uploadResult.get("url"));
+//            } catch (IOException e){
+//                e.printStackTrace();
+////                model.addAttribute("message", "Sorry I can't upload that!");
+//                
+//            }
+//            return (String) uploadResult.get("url");
+            return fileName;
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
@@ -156,7 +156,6 @@ public class FileStorageService {
             baos.flush();
             MultipartFile file_temp =new MockMultipartFile(fileName,baos.toByteArray());
             Files.copy(file_temp.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-
             return fileName;
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);

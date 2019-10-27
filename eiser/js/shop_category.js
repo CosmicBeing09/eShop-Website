@@ -1,4 +1,4 @@
-
+'use strict';
 function getUrlVars() {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -6,21 +6,28 @@ function getUrlVars() {
   });
   return vars;
 }
-const backendurl = 'https://proda5-back.herokuapp.com/';
-  const frontendurl = 'https://proda5.herokuapp.com/';
-var category = getUrlVars()["category"];
-var request = new XMLHttpRequest()
-const user =  JSON.parse(window.localStorage.getItem('user'))
-console.log(user.id)
+// const backendurl = 'http://localhost:8181/';
+// const frontendurl = 'http://149.28.154.237:82/';
 
+// const backendurl = 'http://149.28.154.237:81/';
+// const frontendurl = 'http://149.28.154.237:82/';
+
+var category = getUrlVars()["category"];
+var request = new XMLHttpRequest();
+//const user =  JSON.parse(window.localStorage.getItem('user'));
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', backendurl +'all_user_product/'+user.id, true)
+if(user.type=="seller"){
+request.open('GET', backendurl +'all_user_product/'+user.id, true);
+}
+else{
+  request.open('GET', backendurl +'allproduct', true);
+}
 
 request.onload = function () {
   // Begin accessing JSON data here
 
   var data = JSON.parse(this.response)
-  console.log(data)
+
   data.forEach(movie => {
     if(category===undefined){
     const app = document.getElementById('category-product')
@@ -41,7 +48,7 @@ request.onload = function () {
     img.style.height="1000"
     img.style.width="1000"
     product_img.appendChild(img)
-    product_btm = document.createElement('div')
+    const product_btm = document.createElement('div')
     product_btm.setAttribute('class', 'product-btm')
     single_product.appendChild(product_btm)
     const aa = document.createElement('a')

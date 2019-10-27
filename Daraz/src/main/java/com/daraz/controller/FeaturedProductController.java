@@ -167,20 +167,20 @@ public class FeaturedProductController {
         String fileName = fileStorageService.storeFile(file);
         String smallFileName = fileStorageService.storeSmallFile(file);
        
-//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-//                .path("/downloadFile/")
-//                .path(fileName)
-//                .toUriString();
-//        
-//        arrayList.add(fileDownloadUri);
-        arrayList.add(fileName);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(fileName)
+                .toUriString();
         
-//        String smallFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-//                .path("/downloadFile/")
-//                .path(smallFileName)
-//                .toUriString();
+        arrayList.add(fileDownloadUri);
+   //     arrayList.add(fileName);
         
-         arrayListSmallFile.add(smallFileName);
+        String smallFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(smallFileName)
+                .toUriString();
+        
+         arrayListSmallFile.add(smallFileDownloadUri);
         
         
         return new UploadFileResponse(fileName, fileName,
@@ -341,12 +341,12 @@ public class FeaturedProductController {
 		mailBody.setDate(new Date());
 		mailBodyRepo.save(mailBody);
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
-		mailMessage.setTo("mohammed09@student.sust.edu");
+		mailMessage.setTo("proda5.order@gmail.com");
 		mailMessage.setSubject("Order on product: "+mailBody.getProductName());
-		mailMessage.setFrom("nonlovesme@gmail.com");
+		mailMessage.setFrom("proda5.temp@gmail.com");
 		mailMessage.setText("Ordered from phone number: "+mailBody.getPhoneNo()+"."+"\n" +
 		"Address: "+mailBody.getAddress()+"\n"+"Product Name: "+mailBody.getProductName()
-		+"\n"+"Price: "+mailBody.getPrice());
+		+"\n"+"Price: "+mailBody.getPrice()+"\n"+mailBody.getShopName());
 		emailSenderService.sendEmail(mailMessage);
 		return "success";
 	}
