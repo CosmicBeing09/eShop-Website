@@ -172,7 +172,7 @@ public class FeaturedProductController {
                 .path(fileName)
                 .toUriString();
         
-        arrayList.add(fileDownloadUri);
+        arrayList.add("http://149.28.154.237:83/" + fileName);
    //     arrayList.add(fileName);
         
         String smallFileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -180,7 +180,7 @@ public class FeaturedProductController {
                 .path(smallFileName)
                 .toUriString();
         
-         arrayListSmallFile.add(smallFileDownloadUri);
+         arrayListSmallFile.add("http://149.28.154.237:83/" + smallFileName);
         
         
         return new UploadFileResponse(fileName, fileName,
@@ -343,7 +343,7 @@ public class FeaturedProductController {
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		mailMessage.setTo("proda5.order@gmail.com");
 		mailMessage.setSubject("Order on product: "+mailBody.getProductName());
-		mailMessage.setFrom("proda5.temp@gmail.com");
+		mailMessage.setFrom("proda5.host@gmail.com");
 		mailMessage.setText("Ordered from phone number: "+mailBody.getPhoneNo()+"."+"\n" +
 		"Address: "+mailBody.getAddress()+"\n"+"Product Name: "+mailBody.getProductName()
 		+"\n"+"Price: "+mailBody.getPrice()+"\n"+mailBody.getShopName());
@@ -362,7 +362,7 @@ public class FeaturedProductController {
 	                .path(fileName)
 	                .toUriString();
 	        
-	         sliderURL.add(fileDownloadUri);
+	         sliderURL.add("http://149.28.154.237:83/"+fileName);
 	        return new UploadFileResponse(fileName, fileDownloadUri,
 	                file.getContentType(), file.getSize());
 	    }

@@ -1,10 +1,4 @@
 'use strict';
-// const backendurl = 'http://localhost:8181/';
-// const frontendurl = 'http://149.28.154.237:82/';
-
-const backendurl = 'http://149.28.154.237:82/';
-const frontendurl = 'http://149.28.154.237:80/';
-
 
 function getUrlVars() {
   
@@ -133,7 +127,7 @@ request.onload = function () {
       img.alt = ''
       img.width = '200px'
       product_img.appendChild(img)
-      product_btm = document.createElement('div')
+      const product_btm = document.createElement('div')
       //product_btm.setAttribute('class', 'product '+movie.category)
       //product_btm.setAttribute('id',movie.category)
       single_product.appendChild(product_btm)

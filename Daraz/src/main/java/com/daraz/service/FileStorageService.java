@@ -51,7 +51,7 @@ public class FileStorageService {
    
     public String storeFile(MultipartFile file) {
         // Normalize file name
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 //        String[] temp = fileName.split("[.]", 2);
 //        temp[0]=temp[0]+"small";
 //        String fina_l = temp[0]+"."+temp[1];

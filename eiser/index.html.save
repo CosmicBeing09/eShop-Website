@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--   Styles For Pop Up  -->
+
+<script>
+  const backendurl = 'https://proda5.com:82/';
+  const frontendurl = 'https://proda5.com:80/';
+</script>
+<style>
+  body {
+    height: 100vh;
+    text-align: center;
+  }
+
+  /*Trigger Button*/
+  .login-trigger {
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to bottom right, #FF4500, #FF4500);
+    padding: 15px 30px;
+    border-radius: 30px;
+    position: relative;
+    top: 50%;
+  }
+
+  /*Modal*/
+  h4 {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .close {
+    color: #fff;
+    transform: scale(1.2)
+  }
+
+  .modal-content {
+    font-weight: bold;
+    background: linear-gradient(to bottom right, #FF4500, #FF4500);
+  }
+
+  .form-control {
+    margin: 1em 0;
+  }
+
+  .form-control:hover,
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #fff;
+  }
+
+  .username,
+  .password {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 2px solid #eee;
+    padding-left: 0;
+    font-weight: normal;
+    background: transparent;
+  }
+
+  .form-control::-webkit-input-placeholder {
+    color: #eee;
+  }
+
+  .form-control:focus::-webkit-input-placeholder {
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .login {
+    padding: 6px 20px;
+    border-radius: 20px;
+    background: rgb(54, 16, 2);
+    border: 2px solid #FF4500;
+    color: #FF4500;
+    font-weight: bold;
+    transition: all .5s;
+    margin-top: 1em;
+  }
+
+  .login:hover {
+    background: rgb(54, 16, 2);
+    color: #fff;
+  }
+
+  .dearrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+</style>
+
+
+
+
+
+
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <title>PRODA5.com</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="vendors/linericon/style.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/themify-icons.css" />
+  <link rel="stylesheet" href="css/flaticon.css" />
+  <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css" />
+  <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css" />
+  <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
+  <link rel="stylesheet" href="vendors/animate-css/animate.css" />
+  <link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <!--================Header Menu Area =================-->
+  <header class="header_area">
+    <div class="top_menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="float-left">
+              <p>Phone: +8801628330969</p>
+              <p>email: proda5.order@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main_menu">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light w-100">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand logo_h" href="index.html">
+            <img src="img/logo.png" alt="" />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+            <div class="row w-100 mr-0">
+              <div class="col-lg-7 pr-0">
+                <ul class="nav navbar-nav center_nav pull-right">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item submenu dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                      aria-haspopup="true" aria-expanded="false">Shop</a>
+                    <ul class="dropdown-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="category.html">Shop Category</a>
+                      </li>
+                    </ul>
+                    <li class="nav-item">
+                      <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    
+              </div>
+
+              <!-- Dropdown -->
+              <div class="col-lg-5 pr-0">
+                <ul class="nav navbar-nav navbar-right right_nav pull-right">
+
+                  <li class="nav-item dropdown" id="listnav">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Login/Register
+                    </a>
+                    <script>
+                      var loginReg = document.getElementById('navbardrop');
+                      if (window.localStorage.getItem('user') == null) {
+                        loginReg.setAttribute('data-target', '#login');
+                        loginReg.setAttribute('data-toggle', 'modal');
+                      }
+                      else {
+                        var data = window.localStorage.getItem('user');
+                        var obj = JSON.parse(data);
+                        document.getElementById('navbardrop').textContent = obj.name;
+                        const arw = document.createElement('i');
+                        arw.setAttribute('class', 'dearrow');
+                        document.getElementById('navbardrop').appendChild(arw);
+                        const listnav = document.getElementById('listnav');
+                        const divnav = document.createElement('div');
+                        divnav.setAttribute('class', 'dropdown-menu');
+                        listnav.appendChild(divnav);
+
+                        const item2 = document.createElement('a');
+                        item2.setAttribute('class', 'dropdown-item')
+                        item2.href = "shop_category.html"
+                        item2.textContent = 'My Products'
+                        divnav.appendChild(item2)
+
+                        const item3 = document.createElement('a');
+                        item3.setAttribute('class', 'dropdown-item')
+                        item3.href = frontendurl;
+                        item3.textContent = 'Logout'
+                        divnav.appendChild(item3)
+                        item3.onclick = function () { window.localStorage.clear(); };
+                      }
+                    </script>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+      </div>
+    </div>
+
+  </header>
+
+
+
+
+
+  <!--================ START POP UP LOGIN  =================-->
+
+  <script type="text/javascript">
+    function submitform() {
+      const phone = document.getElementById("login_username").value;
+      const password = document.getElementById("login_password").value;
+
+      var myurl = backendurl + "login";
+      var xhr = new XMLHttpRequest();
+
+      var data;
+
+      xhr.open("POST", myurl, false);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      data = JSON.stringify({ "phone": phone, "password": password });
+      var response;
+      xhr.onload = function () {
+        if (this.status == 200) {
+          // Here we go on the new page
+          var jsonResponse = JSON.parse(this.response);
+          if (jsonResponse.phone != "NULL") {
+            if (jsonResponse.status == "active") {
+              window.localStorage.setItem('user', JSON.stringify(jsonResponse));
+              window.location.replace(frontendurl + "shop_category.html");
+              // alert('AAA' + JSON.stringify(jsonResponse))
+            }
+            else {
+              alert("Account not activated yet");
+            }
+          }
+          else {
+            alert("Wrong Phone Number or Password");
+          }
+
+        }
+      };
+
+
+      xhr.send(data);
+
+
+    }
+  </script>
+
+  <div id="login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-body">
+          <button data-dismiss="modal" class="close">&times;</button>
+          <h4>Login</h4>
+          <form>
+            <input type="text" id="login_username" class="username form-control" placeholder="Phone Number" />
+            <input type="password" id="login_password" class="password form-control" placeholder="Password" />
+            <div>
+              <button class="btn login" type="button" value="Login" onclick="submitform()">Login</button>
+              <button class="btn login" type="button"
+                onclick="location.href = frontendurl+'registration.html';">Registration</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--================ POP UP LOGIN END =================-->
+
+  <!--================Home Banner Area =================-->
+  <section class="home_banner_area mb-40">
+    <div class="banner_inner d-flex align-items-center">
+      <div class="container">
+        <div class="banner_content row">
+          <div class="col-lg-12">
+            <p class="sub text-uppercase">Smart Gadget Collection</p>
+            <h3><span>Show</span> Your <br />Personal <span>Style</span></h3>
+            <h4>A place for your own choices!</h4>
+            <a class="main_btn mt-40" href="category.html?category==Mobile">View Collection</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Home Banner Area =================-->
+
+
+
+
+
+
+
+  <!--================Header Menu Area =================-->
+
+  <!-- <section class="home_banner_area mb-40"> -->
+
+  <section class="feature-area section_gap_bottom_custom">
+    <div class="col-lg-12">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="carousel_inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="img/logo2.png" alt="First slide">
+          </div>
+          <script src="js/home_slider.js"></script>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <!-- </div>
+        </div> -->
+      <!-- </div> -->
+    </div>
+  </section>
+  <!-- </div> -->
+  <!-- </section> -->
+
+
+
+  <!--================ Feature Product Area =================-->
+  <section class="feature_product_area section_gap_bottom_custom" id="featured_product">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="main_title">
+            <h2><span>Featured product</span></h2>
+            <p>Bring called seed first of third give itself now ment</p>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="featured-product">
+        <script src="js/featured_product.js"></script>
+      </div>
+    </div>
+  </section>
+  <!--================ End Feature Product Area =================-->
+
+  <!--================ Offer Area =================-->
+  <div id="container" class="mb-40">
+    <img id="image" style="width:100%;" src="img/banner/shoe_banner1.jpg">
+  </div>
+  <!--================ End Offer Area =================-->
+
+  <!--================ New Product Area =================-->
+  <section class="new_product_area section_gap_top section_gap_bottom_custom" id="new_product">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="main_title">
+            <h2><span>new products</span></h2>
+            <p>Bring called seed first of third give itself now ment</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="new-product">
+        <script src="js/new_product.js"></script>
+      </div>
+    </div>
+  </section>
+  <!--================ End New Product Area =================-->
+  <div id="container" class="mb-40">
+    <img id="image" style="width:100%;" src="img/banner/furniture_banner.jpg">
+  </div>
+  <!--================ Inspired Product Area =================-->
+  <section class="inspired_product_area section_gap_bottom_custom" id="inspired_product">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="main_title">
+            <h2><span>Inspired products</span></h2>
+            <p>Bring called seed first of third give itself now ment</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="inspired-product">
+        <script src="js/inspired_product.js"></script>
+      </div>
+    </div>
+  </section>
+  <!--================ End Inspired Product Area =================-->
+
+
+
+  <!--================ start footer Area  =================-->
+  <footer class="footer-area section_gap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-6 single-footer-widget">
+          <h4>Products</h4>
+          <ul>
+            <ul>
+              <li><a href="category.html?category=Electronics">Electronics</a></li>
+              <li><a href="ategory.html?category=Furniture">Furniture</a></li>
+              <li><a href="category.html?category=Mobile">Smart Phone</a></li>
+              <li><a href="category.html?category=Ladies">Ladies Collection</a></li>
+              <li><a href="category.html?category=Kids">Kids Collection</a></li>
+              <li><a href="category.html?category=Cosmatics">Cosmectics Collection</a></li>
+            </ul>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 single-footer-widget">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#new_product">New Products</a></li>
+            <li><a href="#featured_product">Featured Product</a></li>
+
+            <li><a href="#inspired_product">Inspired Product</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6 single-footer-widget">
+          <h4> Top Products</h4>
+          <ul>
+            <li><a href="category.html?category=Electronics">Electronics</a></li>
+            <li><a href="ategory.html?category=Furniture">Furniture</a></li>
+            <li><a href="category.html?category=Mobile">Smart Phone</a></li>
+            <li><a href="category.html?category=Ladies">Ladies Collection</a></li>
+            <li><a href="category.html?category=Kids">Kids Collection</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-7 single-footer-widget ml-auto ">
+          <h4>Contacts</h4>
+          <ul>
+            <li style="color: white;">Polash Ahmed</li>
+            <li style="color: gray;">Mobile No. +8801857763383</li>
+            <li style="color: white;">Rafi Hasib</li>
+            <li style="color: gray;">Mobile No. +8801850385455</li>
+
+          </ul>
+        </div>
+
+      </div>
+      <div class="footer-bottom row align-items-center">
+        <p class="footer-text m-0 col-lg-8 col-md-12">
+          Site Developed & Managed By: Raihan Ullah, SWE, SUST.
+        </p>
+
+      </div>
+    </div>
+  </footer>
+  <!--================ End footer Area  =================-->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/stellar.js"></script>
+  <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+  <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+  <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+  <script src="vendors/isotope/isotope-min.js"></script>
+  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="js/jquery.ajaxchimp.min.js"></script>
+  <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+  <script src="vendors/counter-up/jquery.counterup.js"></script>
+  <script src="js/mail-script.js"></script>
+  <script src="js/theme.js"></script>
+</body>
+
+</html>

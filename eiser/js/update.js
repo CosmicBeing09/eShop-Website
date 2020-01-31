@@ -8,9 +8,10 @@ function getUrlVars() {
     return vars;
 }
 
-const backendurl = 'http://149.28.154.237:82/';
-const frontendurl = 'http://149.28.154.237:80/';
-
+//const backendurl = 'http://149.28.154.237:82/';
+//const frontendurl = 'http://149.28.154.237:80/';
+const backendurl = 'https://dataserver.proda5.com/';
+const frontendurl = 'https://proda5.com/';
 
 var link1 = backendurl + 'uploadProduct';
 var update_button = document.querySelector('#update_product_button');

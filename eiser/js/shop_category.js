@@ -7,8 +7,8 @@ function getUrlVars() {
   return vars;
 }
 
-const backendurl = 'http://149.28.154.237:82/';
-const frontendurl = 'http://149.28.154.237:80/';
+//const backendurl = 'http://149.28.154.237:82/';
+//const frontendurl = 'http://149.28.154.237:80/';
 
 var category = getUrlVars()["category"];
 var request = new XMLHttpRequest();
@@ -61,19 +61,19 @@ request.onload = function () {
     icon.setAttribute('class','p_icon')
 
     const a1 = document.createElement('a')
-    a1.setAttribute('herf','#')
+    a1.setAttribute("href",strLink)
     const i1 = document.createElement('i')
     i1.setAttribute('class','ti-eye')
     a1.appendChild(i1)
 
     const a2 = document.createElement('a')
-    a2.setAttribute('herf','#')
+    a2.setAttribute("href",strLink)
     const i2 = document.createElement('i')
     i2.setAttribute('class','ti-heart')
     a2.appendChild(i2)
 
     const a3 = document.createElement('a')
-    a3.setAttribute('herf','#')
+    a3.setAttribute("href",strLink)
     const i3 = document.createElement('i')
     i3.setAttribute('class','ti-shopping-cart')
     a3.appendChild(i3)
@@ -130,7 +130,7 @@ request.onload = function () {
       img.style.height="1000"
       img.style.width="1000"
       product_img.appendChild(img)
-      product_btm = document.createElement('div')
+      const product_btm = document.createElement('div')
       product_btm.setAttribute('class', 'product-btm')
       single_product.appendChild(product_btm)
       const aa = document.createElement('a')

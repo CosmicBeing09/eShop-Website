@@ -3,9 +3,10 @@
 // const backendurl = 'http://localhost:8181/';
 // const frontendurl = '';
 
-const backendurl = 'http://149.28.154.237:81/';
-const frontendurl = 'http://149.28.154.237:82/';
-
+//const backendurl = 'http://149.28.154.237:82/';
+//const frontendurl = 'http://149.28.154.237:80/';
+const backendurl = 'https://dataserver.proda5.com/';
+const frontendurl = 'https://proda5.com/';
 
 //const user = JSON.parse(window.localStorage.getItem('user'));
 var request = new XMLHttpRequest();
@@ -14,6 +15,7 @@ request.open('GET', backendurl + 'alluser', false);
 request.onload = function () {
   var data = JSON.parse(this.response)
   data.forEach(temp => {
+   if(temp.type == 'seller'){
     const root = document.getElementById('root');
     const button_group_area = document.createElement('div');
     button_group_area.setAttribute('class', 'button-group-area');
@@ -103,7 +105,7 @@ request.onload = function () {
 
     root.appendChild(button_group_area);
 
-
+}
   })
 }
 request.send();

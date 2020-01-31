@@ -1,5 +1,5 @@
-const backendurl = 'http://149.28.154.237:82/';
-const frontendurl = 'http://149.28.154.237:80/';
+//const backendurl = 'http://149.28.154.237:82/';
+//const frontendurl = 'http://149.28.154.237:80/';
 
 var sliderUploadButton = document.querySelector('#upload_slider_button')
 var sliderInput = document.querySelector('#sliderUploadInput')

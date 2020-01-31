@@ -1,8 +1,5 @@
 'use strict';
 
-const backendurl = 'http://149.28.154.237:82/';
-const frontendurl = 'http://149.28.154.237:80/';
-
 
 var link = backendurl+'order'
 var buy = document.querySelector('#buy_button');
@@ -33,11 +30,11 @@ function order() {
 }
 buy.addEventListener('click', function(event){
     
-  order();
   var $load = $("#loadMe").modal({
     backdrop: "static", //remove ability to close modal with click
     keyboard: false, //remove option to close with keyboard
     show: true //Display loader!
   });
+order();
    event.preventDefault();
 }, true);
